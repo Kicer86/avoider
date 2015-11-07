@@ -12,7 +12,7 @@ TARGET = avoider
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += src/main.cpp
 
 HEADERS  +=
 
@@ -22,5 +22,19 @@ CONFIG += mobility
 MOBILITY = 
 
 DISTFILES += \
-    avoider.qml
+    rc/qml/avoider.qml \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat
 
+
+OTHER_FILES+=
+
+RESOURCES += \
+    rc/qml_resources.qrc
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
