@@ -1,2 +1,2 @@
-build-arm7-debug
-avoider.pro.user
+/build-*
+/avoider.pro.user
