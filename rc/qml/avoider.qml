@@ -14,7 +14,13 @@ Rectangle
        y: 30
        anchors.horizontalCenter: canvas.horizontalCenter
        font.pointSize: 24; font.bold: true
-   }
+    }
+
+    Controler
+    {
+        x: 0
+        y: 100
+    }
 
 }
 

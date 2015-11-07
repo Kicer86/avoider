@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/avoider.qml</file>
+        <file>qml/Controler.qml</file>
+        <file>qml/ControlerForm.ui.qml</file>
     </qresource>
 </RCC>
