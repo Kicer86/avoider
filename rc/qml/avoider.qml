@@ -8,15 +8,6 @@ Rectangle
     width: 800
     height: 600
 
-    Text
-    {
-       id: helloText
-       text: "Hello world!"
-       y: 30
-       anchors.horizontalCenter: canvas.horizontalCenter
-       font.pointSize: 24; font.bold: true
-    }
-
     Controler
     {
         anchors.right: canvas.right
