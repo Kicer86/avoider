@@ -10,6 +10,11 @@ Rectangle
 
     Controler
     {
+        id: pad
+
+        transformOrigin: Item.BottomRight
+        scale: 0.5
+
         anchors.right: canvas.right
         anchors.bottom: canvas.bottom
     }
