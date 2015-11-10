@@ -18,8 +18,8 @@ Rectangle
 
     Controler
     {
-        x: 0
-        y: 100
+        anchors.right: canvas.right
+        anchors.bottom: canvas.bottom
     }
 
 }
