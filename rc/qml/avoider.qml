@@ -5,7 +5,8 @@ Rectangle
 {
     id: canvas
 
-    width: 320; height: 480
+    width: 800
+    height: 600
 
     Text
     {
