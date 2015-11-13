@@ -10,7 +10,7 @@ Item {
         y: 100
         width: 200
         height: 200
-        color: "#000000"
+        color: "#ffffff"
         radius: 100
         border.width: 2
     }
@@ -21,7 +21,7 @@ Item {
         y: 0
         width: 100
         height: 100
-        color: "#ffe616"
+        color: "#ffffff"
         radius: 50
         border.width: 2
     }
@@ -76,7 +76,7 @@ Item {
         y: 40
         width: 100
         height: 100
-        color: "#2a7f09"
+        color: "#ffffff"
         radius: 50
         border.width: 2
     }
@@ -87,7 +87,7 @@ Item {
         y: 40
         width: 100
         height: 100
-        color: "#d20000"
+        color: "#ffffff"
         radius: 50
         border.width: 2
     }
