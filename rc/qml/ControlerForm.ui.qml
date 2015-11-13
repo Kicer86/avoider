@@ -1,10 +1,13 @@
 import QtQuick 2.4
 
 Item {
+    id: controler
+
     width: 400
     height: 400
 
-    Rectangle {
+    Rectangle
+    {
         id: central
         x: 100
         y: 100
@@ -13,6 +16,36 @@ Item {
         color: "#ffffff"
         radius: 100
         border.width: 2
+
+        MouseArea
+        {
+            anchors.fill: parent
+
+            property int startX: 0
+            property int startY: 0
+
+            onPressed:
+            {
+                startX = mouseX
+                startY = mouseY
+            }
+
+            onPositionChanged:
+            {
+                var dx = mouseX - startX
+                var dy = mouseY - startY
+
+                if (dx > 80)
+                    console.log("right")
+                else if (dx < -80)
+                    console.log("left")
+
+                if (dy > 80)
+                    console.log("down")
+                else if (dy < -80)
+                    console.log("up")
+            }
+        }
     }
 
     Rectangle {
