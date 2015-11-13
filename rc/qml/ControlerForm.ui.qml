@@ -35,19 +35,20 @@ Item {
 
             onPositionChanged:
             {
+                const sensitivity = 20
                 var dx = mouseX - startX
                 var dy = mouseY - startY
 
-                if (dx > 80)
+                if (dx > sensitivity)
                     controler.x_value = 1
-                else if (dx < -80)
+                else if (dx < -sensitivity)
                     controler.x_value = -1
                 else
                     controler.x_value = 0
 
-                if (dy > 80)
+                if (dy > sensitivity)
                     controler.y_value = 1
-                else if (dy < -80)
+                else if (dy < -sensitivity)
                     controler.y_value = -1
                 else
                     controler.y_value = 0
