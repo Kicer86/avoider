@@ -19,5 +19,12 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
+    Player
+    {
+        id: player
+        x: 100
+        y: 100
+    }
+
 }
 
