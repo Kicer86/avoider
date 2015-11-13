@@ -52,6 +52,12 @@ Item {
                 else
                     controler.y_value = 0
             }
+
+            onReleased:
+            {
+                controler.x_value = 0
+                controler.y_value = 0
+            }
         }
     }
 
