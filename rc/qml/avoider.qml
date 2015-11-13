@@ -23,12 +23,15 @@ Rectangle
     {
         id: canon
 
-        transformOrigin: Item.Right
+        transformOrigin: Item.Center
         scale: 0.5
 
         anchors.right: canvas.right
         anchors.verticalCenter: canvas.verticalCenter
+
+
+    }
     }
 
-}
+
 
