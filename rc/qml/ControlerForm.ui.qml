@@ -6,8 +6,8 @@ Item {
     width: 400
     height: 400
 
-    signal moveY(int y)
-    signal moveX(int x)
+    property int x_value: 0
+    property int y_value: 0
 
     Rectangle
     {
@@ -39,14 +39,18 @@ Item {
                 var dy = mouseY - startY
 
                 if (dx > 80)
-                    controler.moveX(1)
+                    controler.x_value = 1
                 else if (dx < -80)
-                    controler.moveX(-1)
+                    controler.x_value = -1
+                else
+                    controler.x_value = 0
 
                 if (dy > 80)
-                    controler.moveY(1)
+                    controler.y_value = 1
                 else if (dy < -80)
-                    controler.moveY(-1)
+                    controler.y_value = -1
+                else
+                    controler.y_value = 0
             }
         }
     }
