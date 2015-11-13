@@ -17,10 +17,6 @@ Rectangle
 
         anchors.right: canvas.right
         anchors.bottom: canvas.bottom
-
-        onMoveX: player.x += x
-        onMoveY: player.y += y
-
     }
 
     Player
@@ -29,6 +25,16 @@ Rectangle
         x: 100
         y: 100
     }
+
+    Timer
+    {
+       interval: 5; running: true; repeat: true
+       onTriggered:
+       {
+           player.x += pad.x_value
+           player.y += pad.y_value
+       }
+   }
 
 }
 
