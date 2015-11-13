@@ -19,5 +19,16 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
+    Canon
+    {
+        id: canon
+
+        transformOrigin: Item.Right
+        scale: 0.5
+
+        anchors.right: canvas.right
+        anchors.verticalCenter: canvas.verticalCenter
+    }
+
 }
 
