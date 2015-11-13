@@ -17,6 +17,10 @@ Rectangle
 
         anchors.right: canvas.right
         anchors.bottom: canvas.bottom
+
+        onMoveX: player.x += x
+        onMoveY: player.y += y
+
     }
 
     Player
