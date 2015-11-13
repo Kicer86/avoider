@@ -1,18 +1,65 @@
 import QtQuick 2.4
 
 Item {
+    id: controler
+
     width: 400
     height: 400
 
-    Rectangle {
+    property int x_value: 0
+    property int y_value: 0
+
+    Rectangle
+    {
         id: central
         x: 100
         y: 100
         width: 200
         height: 200
-        color: "#000000"
+        color: "#ffffff"
         radius: 100
         border.width: 2
+
+        MouseArea
+        {
+            anchors.fill: parent
+
+            property int startX: 0
+            property int startY: 0
+
+            onPressed:
+            {
+                startX = mouseX
+                startY = mouseY
+            }
+
+            onPositionChanged:
+            {
+                const sensitivity = 20
+                var dx = mouseX - startX
+                var dy = mouseY - startY
+
+                if (dx > sensitivity)
+                    controler.x_value = 1
+                else if (dx < -sensitivity)
+                    controler.x_value = -1
+                else
+                    controler.x_value = 0
+
+                if (dy > sensitivity)
+                    controler.y_value = 1
+                else if (dy < -sensitivity)
+                    controler.y_value = -1
+                else
+                    controler.y_value = 0
+            }
+
+            onReleased:
+            {
+                controler.x_value = 0
+                controler.y_value = 0
+            }
+        }
     }
 
     Rectangle {
@@ -21,7 +68,7 @@ Item {
         y: 0
         width: 100
         height: 100
-        color: "#ffe616"
+        color: "#ffffff"
         radius: 50
         border.width: 2
     }
@@ -76,7 +123,7 @@ Item {
         y: 40
         width: 100
         height: 100
-        color: "#2a7f09"
+        color: "#ffffff"
         radius: 50
         border.width: 2
     }
@@ -87,7 +134,7 @@ Item {
         y: 40
         width: 100
         height: 100
-        color: "#d20000"
+        color: "#ffffff"
         radius: 50
         border.width: 2
     }

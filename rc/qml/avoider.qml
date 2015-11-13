@@ -19,5 +19,22 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
+    Player
+    {
+        id: player
+        x: 100
+        y: 100
+    }
+
+    Timer
+    {
+       interval: 5; running: true; repeat: true
+       onTriggered:
+       {
+           player.x += pad.x_value
+           player.y += pad.y_value
+       }
+   }
+
 }
 
