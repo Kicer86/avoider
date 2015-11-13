@@ -3,5 +3,6 @@
         <file>qml/avoider.qml</file>
         <file>qml/Controler.qml</file>
         <file>qml/ControlerForm.ui.qml</file>
+        <file>qml/Player.qml</file>
     </qresource>
 </RCC>
