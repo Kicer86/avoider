@@ -6,6 +6,9 @@ Item {
     width: 400
     height: 400
 
+    signal moveY(int y)
+    signal moveX(int x)
+
     Rectangle
     {
         id: central
@@ -36,14 +39,14 @@ Item {
                 var dy = mouseY - startY
 
                 if (dx > 80)
-                    console.log("right")
+                    controler.moveX(1)
                 else if (dx < -80)
-                    console.log("left")
+                    controler.moveX(-1)
 
                 if (dy > 80)
-                    console.log("down")
+                    controler.moveY(1)
                 else if (dy < -80)
-                    console.log("up")
+                    controler.moveY(-1)
             }
         }
     }
