@@ -1,13 +1,10 @@
 import QtQuick 2.4
 
 Item {
-    id: controler
-
     width: 400
     height: 400
 
-    property int x_value: 0
-    property int y_value: 0
+    property alias mouse_area: mouse_area
 
     Rectangle
     {
@@ -22,43 +19,9 @@ Item {
 
         MouseArea
         {
+            id: mouse_area
+
             anchors.fill: parent
-
-            property int startX: 0
-            property int startY: 0
-
-            onPressed:
-            {
-                startX = mouseX
-                startY = mouseY
-            }
-
-            onPositionChanged:
-            {
-                const sensitivity = 20
-                var dx = mouseX - startX
-                var dy = mouseY - startY
-
-                if (dx > sensitivity)
-                    controler.x_value = 1
-                else if (dx < -sensitivity)
-                    controler.x_value = -1
-                else
-                    controler.x_value = 0
-
-                if (dy > sensitivity)
-                    controler.y_value = 1
-                else if (dy < -sensitivity)
-                    controler.y_value = -1
-                else
-                    controler.y_value = 0
-            }
-
-            onReleased:
-            {
-                controler.x_value = 0
-                controler.y_value = 0
-            }
         }
     }
 
@@ -150,4 +113,3 @@ Item {
         border.width: 2
     }
 }
-
