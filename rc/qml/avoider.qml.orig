@@ -19,18 +19,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-    Canon
-    {
-        id: canon
-
-        transformOrigin: Item.Center
-        scale: 0.5
-
-        anchors.right: canvas.right
-        anchors.verticalCenter: canvas.verticalCenter
-
-    }
-    
+<<<<<<< HEAD
     Player
     {
         id: player
@@ -48,6 +37,19 @@ Rectangle
        }
    }
 
+=======
+    Canon
+    {
+        id: canon
+
+        transformOrigin: Item.Center
+        scale: 0.5
+
+        anchors.right: canvas.right
+        anchors.verticalCenter: canvas.verticalCenter
+
+    }
+>>>>>>> canon
 }
 
 
