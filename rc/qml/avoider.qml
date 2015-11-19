@@ -67,11 +67,15 @@ Rectangle
 
         z: 2
 
+        anchors.verticalCenter:   parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+
         Button
         {
             id: beginButton
 
-            anchors.fill: parent
+            anchors.topMargin:        parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
 
             text: "Begin game"
         }
