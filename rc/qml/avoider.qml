@@ -24,7 +24,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-
+        property alias canon : canon
     Canon
     {
         id: canon
@@ -46,6 +46,7 @@ Rectangle
         x: 100
         y: 100
         z: 1
+        transformOrigin: Item.Center
     }
 
 

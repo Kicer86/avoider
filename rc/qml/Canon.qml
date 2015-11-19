@@ -2,13 +2,18 @@ import QtQuick 2.4
 
 CanonForm {
 
-        SequentialAnimation on image_canon.y { // test animation
-         running: true
-         loops: Animation.Infinite
-         NumberAnimation {  to: 150; duration: 2000 }
-         PauseAnimation { duration: 1000 }
-         NumberAnimation {  to: 50; duration: 1000 }
+    Timer {
+           interval: 10; running: true; repeat: true
+           onTriggered: image_canon.rotation = calcAngle()
+
+           function calcAngle() {   // This function calculate proper angle for canon object
+
+               var variable = (canon.y - player.y)/(canon.x - player.x)
+               var angle = Math.atan(variable)/(2*3.14)*360
+
+               return (angle);
+           }
        }
 
-    }
+}
 
