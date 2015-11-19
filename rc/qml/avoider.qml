@@ -10,9 +10,13 @@ Rectangle
     width: 800
     height: 600
 
+    z: 0
+
     Controler
     {
         id: pad
+
+        z: 1
 
         transformOrigin: Item.BottomRight
         scale: 0.5
@@ -25,6 +29,8 @@ Rectangle
     Canon
     {
         id: canon
+
+        z: 1
 
         transformOrigin: Item.Center
         scale: 0.5
@@ -40,6 +46,7 @@ Rectangle
         id: player
         x: 100
         y: 100
+        z: 1
     }
 
 
@@ -57,6 +64,8 @@ Rectangle
     Item
     {
         id: menu
+
+        z: 2
 
         Button
         {
