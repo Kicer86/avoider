@@ -19,6 +19,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
+        property alias canon : canon
     Canon
     {
         id: canon
@@ -36,6 +37,7 @@ Rectangle
         id: player
         x: 100
         y: 100
+        transformOrigin: Item.Center
     }
 
     Timer
