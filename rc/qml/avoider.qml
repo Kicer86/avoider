@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
-import QtQml.StateMachine 1.0
 
 Rectangle
 {
@@ -74,66 +73,70 @@ Rectangle
         {
             id: beginButton
 
-            anchors.topMargin:        parent.top
+            anchors.topMargin:        parent.Top
             anchors.horizontalCenter: parent.horizontalCenter
 
             text: "Begin game"
+
+            onClicked: canvas.state = "game"
         }
     }
 
+    state: "init"
 
-    StateMachine
-    {
-        id: stateMachine
-        // set the initial state
-        initialState: init
+    states:
+    [
+        State
+        {
+            name: "init"
 
-        // start the state machine
-        running: true
+            PropertyChanges
+            {
+                target: menu
+                opacity: 1
+                visible: true
+            }
+
+            PropertyChanges
+            {
+                target: player
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: canon
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: pad
+                opacity: 0
+                visible: false
+            }
+        },
 
         State
         {
-            id: init
+            name: "game"
 
-            SignalTransition
+            PropertyChanges
             {
-                targetState: game
-                signal: beginButton.clicked
+                target: menu
+                opacity: 0
+                visible: false
             }
-
-            onEntered: console.log("init entered")
-            onExited: console.log("init exited")
-        }
+        },
 
         State
         {
-            id: game
-
-            SignalTransition
-            {
-                targetState: s3
-                signal: button.clicked
-            }
-
-            onEntered: console.log("game entered")
-            onExited: console.log("game exited")
+            name: "gameOver"
         }
 
-        State
-        {
-            id: gameOver
-
-            SignalTransition
-            {
-                targetState: game
-                signal: button.clicked
-            }
-
-            onEntered: console.log("gameOver entered")
-            onExited: console.log("gameOver exited")
-        }
-
-    }
+    ]
 
 }
 
