@@ -82,6 +82,7 @@ Rectangle
         }
     }
 
+    // initial state
     state: "init"
 
     states:
