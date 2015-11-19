@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
+import QtQuick.Controls 1.4
+import QtQml.StateMachine 1.0
 
 Rectangle
 {
@@ -19,6 +21,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
+
     Canon
     {
         id: canon
@@ -30,6 +33,7 @@ Rectangle
         anchors.verticalCenter: canvas.verticalCenter
 
     }
+
     
     Player
     {
@@ -37,6 +41,7 @@ Rectangle
         x: 100
         y: 100
     }
+
 
     Timer
     {
@@ -46,7 +51,76 @@ Rectangle
            player.x += pad.x_value
            player.y += pad.y_value
        }
-   }
+    }
+
+
+    Item
+    {
+        id: menu
+
+        Button
+        {
+            id: beginButton
+
+            anchors.fill: parent
+
+            text: "Begin game"
+        }
+    }
+
+
+    StateMachine
+    {
+        id: stateMachine
+        // set the initial state
+        initialState: init
+
+        // start the state machine
+        running: true
+
+        State
+        {
+            id: init
+
+            SignalTransition
+            {
+                targetState: game
+                signal: beginButton.clicked
+            }
+
+            onEntered: console.log("init entered")
+            onExited: console.log("init exited")
+        }
+
+        State
+        {
+            id: game
+
+            SignalTransition
+            {
+                targetState: s3
+                signal: button.clicked
+            }
+
+            onEntered: console.log("game entered")
+            onExited: console.log("game exited")
+        }
+
+        State
+        {
+            id: gameOver
+
+            SignalTransition
+            {
+                targetState: game
+                signal: button.clicked
+            }
+
+            onEntered: console.log("gameOver entered")
+            onExited: console.log("gameOver exited")
+        }
+
+    }
 
 }
 
