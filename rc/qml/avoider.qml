@@ -51,11 +51,11 @@ Rectangle
 
     Timer
     {
-       interval: 5; running: true; repeat: true
+       interval: 20; running: true; repeat: true
        onTriggered:
        {
-           player.x += pad.x_value
-           player.y += pad.y_value
+           player.x += pad.x_value * 2
+           player.y += pad.y_value * 2
        }
     }
 
@@ -140,10 +140,3 @@ Rectangle
     ]
 
 }
-
-
-
-
-
-
-
