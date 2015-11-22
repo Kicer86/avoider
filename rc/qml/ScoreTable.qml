@@ -1,6 +1,12 @@
 import QtQuick 2.0
 
-Item {
+Item
+{
+    property int score: 0
 
+    Text
+    {
+        text: "Score: " + score
+    }
 }
 
