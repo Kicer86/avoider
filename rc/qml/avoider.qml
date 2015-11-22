@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
-import QtQuick.Controls 1.4
+import QtQuick.Controls 1.0
+
 
 Rectangle
 {
@@ -10,6 +11,17 @@ Rectangle
     height: 600
 
     z: 0
+
+//***   BULLET OBJECT ***
+    Bullet
+    {
+        id: bullet
+
+        x: canon.x + 50
+        y: canon.y + 50
+
+    }
+//*** END OF BULLET OBJECT ***
 
     Controler
     {
@@ -59,6 +71,7 @@ Rectangle
            player.y += pad.y_value * 2
        }
     }
+
 
 
     Item
@@ -116,6 +129,13 @@ Rectangle
             PropertyChanges
             {
                 target: pad
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: bullet
                 opacity: 0
                 visible: false
             }
