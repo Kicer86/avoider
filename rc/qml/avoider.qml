@@ -107,7 +107,7 @@ Rectangle
                 {
                     target: scoreTable
                     score: 0
-                    increment: 1
+                    increment: 10
                 }
             }
         ]
