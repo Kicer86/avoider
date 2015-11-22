@@ -49,17 +49,75 @@ Rectangle
         y: 100
         z: 1
         transformOrigin: Item.Center
+
+        Timer
+        {
+           interval: 20; running: true; repeat: true
+           onTriggered:
+           {
+               player.x += pad.x_value * 2
+               player.y += pad.y_value * 2
+           }
+        }
     }
 
 
-    Timer
+    ScoreTable
     {
-       interval: 20; running: true; repeat: true
-       onTriggered:
-       {
-           player.x += pad.x_value * 2
-           player.y += pad.y_value * 2
-       }
+        id: scoreTable
+
+        anchors.top:  parent.top
+        anchors.left: parent.left
+
+        property int increment: 0
+
+        state: "init"
+
+        states:
+        [
+            State
+            {
+                name: "init"
+
+                PropertyChanges
+                {
+                    target: timer
+                    running: false
+                }
+
+                PropertyChanges
+                {
+                    target: scoreTable
+                    score: 0
+                    increment: 0
+                }
+            },
+
+            State
+            {
+                name: "level 1"
+
+                PropertyChanges
+                {
+                    target: timer
+                    running: true
+                }
+
+                PropertyChanges
+                {
+                    target: scoreTable
+                    score: 0
+                    increment: 1
+                }
+            }
+        ]
+
+        Timer
+        {
+            id: timer
+            interval: 1000; repeat: true
+            onTriggered: scoreTable.score += scoreTable.increment
+        }
     }
 
 
@@ -121,6 +179,12 @@ Rectangle
                 opacity: 0
                 visible: false
             }
+
+            PropertyChanges
+            {
+                target: scoreTable
+                state: "init"
+            }
         },
 
         State
@@ -132,6 +196,12 @@ Rectangle
                 target: menu
                 opacity: 0
                 visible: false
+            }
+
+            PropertyChanges
+            {
+                target: scoreTable
+                state: "level 1"
             }
         },
 
