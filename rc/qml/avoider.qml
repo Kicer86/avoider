@@ -62,6 +62,15 @@ Rectangle
     }
 
 
+    ScoreTable
+    {
+        id: scoreTable
+
+        anchors.top:  parent.top
+        anchors.left: parent.left
+    }
+
+
     Item
     {
         id: menu
