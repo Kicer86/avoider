@@ -184,6 +184,8 @@ Rectangle
             {
                 target: scoreTable
                 state: "init"
+                opacity: 0
+                visible: false
             }
         },
 
