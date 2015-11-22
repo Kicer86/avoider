@@ -37,6 +37,8 @@ Rectangle
         anchors.right: canvas.right
         anchors.verticalCenter: canvas.verticalCenter
 
+        targetX: player.x
+        targetY: player.y
     }
 
     
