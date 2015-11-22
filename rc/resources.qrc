@@ -7,5 +7,6 @@
         <file>qml/Canon.qml</file>
         <file>qml/CanonForm.ui.qml</file>
         <file>img/canon.png</file>
+        <file>qml/ScoreTable.qml</file>
     </qresource>
 </RCC>
