@@ -11,7 +11,8 @@ CanonForm {
 
            function calcAngle() {   // This function calculate proper angle for canon object
 
-               var variable = ((mapToItem(null, 0, 0).y)- targetY)/((mapToItem(null, 0, 0).x) - targetX) //mapToItem takes x,y coordinates from Canon on canvas
+               var position = mapToItem(null, 0, 0);
+               var variable = (position.y- targetY)/(position.x - targetX) //mapToItem takes x,y coordinates from Canon on canvas
                var angle = Math.atan(variable)/(2*3.14)*360
 
                return (angle);
