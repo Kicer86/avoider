@@ -49,17 +49,16 @@ Rectangle
         y: 100
         z: 1
         transformOrigin: Item.Center
-    }
 
-
-    Timer
-    {
-       interval: 20; running: true; repeat: true
-       onTriggered:
-       {
-           player.x += pad.x_value * 2
-           player.y += pad.y_value * 2
-       }
+        Timer
+        {
+           interval: 20; running: true; repeat: true
+           onTriggered:
+           {
+               player.x += pad.x_value * 2
+               player.y += pad.y_value * 2
+           }
+        }
     }
 
 
