@@ -24,7 +24,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-        property alias canon : canon
+
     Canon
     {
         id: canon
