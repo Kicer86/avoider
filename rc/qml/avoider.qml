@@ -24,7 +24,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-        property alias canon : canon
+
     Canon
     {
         id: canon
@@ -37,6 +37,8 @@ Rectangle
         anchors.right: canvas.right
         anchors.verticalCenter: canvas.verticalCenter
 
+        targetX: player.x
+        targetY: player.y
     }
 
     
