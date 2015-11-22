@@ -107,7 +107,7 @@ Rectangle
                 {
                     target: scoreTable
                     score: 0
-                    increment: 1
+                    increment: 10
                 }
             }
         ]
@@ -184,6 +184,8 @@ Rectangle
             {
                 target: scoreTable
                 state: "init"
+                opacity: 0
+                visible: false
             }
         },
 
