@@ -40,7 +40,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-
+//***   CANON OBJECT ***
     Canon
     {
         id: canon
@@ -56,7 +56,7 @@ Rectangle
         targetX: player.x
         targetY: player.y
     }
-
+//***   END OF CANON OBJECT ***
     
     Player
     {

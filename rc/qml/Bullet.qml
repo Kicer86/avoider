@@ -19,23 +19,15 @@ BulletForm {
     ParallelAnimation {
         id: bullet_anim
 
-//       property var from_x : canon.x + 50
-//       property var from_y : canon.y + 50
-//       property var to_x : player.x + 25
-//       property var to_y : player.y + 25
-
         NumberAnimation { target: bullet; property: "x"; from:  canonX; to: -10; duration: 500 }
         NumberAnimation { target: bullet; property: "y"; from: canonY; to: calculateLeftEdge_y(canonX, canonY, targetX, targetY); duration: 500 }
 
         }
     function calculateLeftEdge_y(from_x, from_y, to_x, to_y){
 
-
-       var a = Math.atan((to_y-from_y)/(to_x-from_x))
+        var a = Math.atan((to_y-from_y)/(to_x-from_x))
         var b = to_y - a*to_x
         return (a*(-10)+b)
-    }
-
-
+        }
 
 }
