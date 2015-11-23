@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
-import QtQuick.Controls 1.4
+import QtQuick.Controls 1.0
+
 
 Rectangle
 {
@@ -10,6 +11,21 @@ Rectangle
     height: 600
 
     z: 0
+
+//***   BULLET OBJECT ***
+    Bullet
+    {
+        id: bullet
+
+        x: canon.x + 50
+        y: canon.y + 50
+        canonX: canon.x + 50
+        canonY: canon.y + 50
+        targetX: player.x + 25
+        targetY: player.y + 25
+
+    }
+//*** END OF BULLET OBJECT ***
 
     Controler
     {
@@ -24,7 +40,7 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-
+//***   CANON OBJECT ***
     Canon
     {
         id: canon
@@ -40,7 +56,7 @@ Rectangle
         targetX: player.x
         targetY: player.y
     }
-
+//***   END OF CANON OBJECT ***
     
     Player
     {
@@ -49,6 +65,8 @@ Rectangle
         y: 100
         z: 1
         transformOrigin: Item.Center
+
+
 
         Timer
         {
@@ -121,6 +139,7 @@ Rectangle
     }
 
 
+
     Item
     {
         id: menu
@@ -176,6 +195,13 @@ Rectangle
             PropertyChanges
             {
                 target: pad
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: bullet
                 opacity: 0
                 visible: false
             }
