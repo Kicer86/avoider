@@ -3,12 +3,15 @@
         <file>qml/avoider.qml</file>
         <file>qml/Controler.qml</file>
         <file>qml/ControlerForm.ui.qml</file>
-<<<<<<< HEAD
         <file>qml/Player.qml</file>
-=======
         <file>qml/Canon.qml</file>
         <file>qml/CanonForm.ui.qml</file>
         <file>img/canon.png</file>
->>>>>>> canon
+<<<<<<< HEAD
+        <file>qml/Bullet.qml</file>
+        <file>qml/BulletForm.ui.qml</file>
+=======
+        <file>qml/ScoreTable.qml</file>
+>>>>>>> master
     </qresource>
 </RCC>
