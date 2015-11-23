@@ -2,6 +2,11 @@ import QtQuick 2.4
 
 BulletForm {
 
+    property int canonX
+    property int canonY
+    property int targetX
+    property int targetY
+
     Timer
     {
        interval: 1000; running: true; repeat: true
@@ -19,8 +24,8 @@ BulletForm {
 //       property var to_x : player.x + 25
 //       property var to_y : player.y + 25
 
-        NumberAnimation { target: bullet; property: "x"; from:  canon.x + 50; to: -10; duration: 500 }
-        NumberAnimation { target: bullet; property: "y"; from: canon.y + 50; to: calculateLeftEdge_y(canon.x + 50, canon.y + 50, player.x + 25, player.y + 25); duration: 500 }
+        NumberAnimation { target: bullet; property: "x"; from:  canonX; to: -10; duration: 500 }
+        NumberAnimation { target: bullet; property: "y"; from: canonY; to: calculateLeftEdge_y(canonX, canonY, targetX, targetY); duration: 500 }
 
         }
     function calculateLeftEdge_y(from_x, from_y, to_x, to_y){

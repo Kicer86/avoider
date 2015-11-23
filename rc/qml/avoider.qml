@@ -19,6 +19,10 @@ Rectangle
 
         x: canon.x + 50
         y: canon.y + 50
+        canonX: canon.x + 50
+        canonY: canon.y + 50
+        targetX: player.x + 25
+        targetY: player.y + 25
 
     }
 //*** END OF BULLET OBJECT ***
@@ -61,7 +65,7 @@ Rectangle
         y: 100
         z: 1
         transformOrigin: Item.Center
-    }
+
 
 
         Timer
