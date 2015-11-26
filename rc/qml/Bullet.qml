@@ -17,6 +17,11 @@ BulletForm {
         NumberAnimation { target: bullet; property: "x"; from: canonX; to: -10; duration: 5000 }
         NumberAnimation { target: bullet; property: "y"; from: canonY; to: calculateLeftEdge_y(canonX, canonY, targetX, targetY); duration: 5000 }
 
+        onStopped:
+        {
+            console.log("bullet dead");
+            bullet.destroy();
+        }
     }
 
 
