@@ -175,6 +175,7 @@ Rectangle
                 target: canon
                 opacity: 0
                 visible: false
+                state: "disabled"
             }
 
             PropertyChanges
@@ -208,6 +209,12 @@ Rectangle
             {
                 target: scoreTable
                 state: "level 1"
+            }
+
+            PropertyChanges
+            {
+                target: canon
+                state: "enabled"
             }
         },
 
