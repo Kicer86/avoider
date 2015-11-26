@@ -25,6 +25,8 @@ CanonForm {
     // shooting timer
     Timer
     {
+        id: shootingTimer
+
         interval: 2000; running: true; repeat: true
 
         onTriggered: createBullet()
@@ -43,6 +45,33 @@ CanonForm {
 
         console.log("creating bullet");
     }
+
+    state: "disabled"
+
+    states:
+    [
+        State
+        {
+            name: "enabled"
+
+            PropertyChanges
+            {
+                target: shootingTimer
+                running: true
+            }
+        },
+
+        State
+        {
+            name: "disabled"
+
+            PropertyChanges
+            {
+                target: shootingTimer
+                running: false
+            }
+        }
+    ]
 
 }
 
