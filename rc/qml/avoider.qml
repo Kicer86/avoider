@@ -12,21 +12,6 @@ Rectangle
 
     z: 0
 
-//***   BULLET OBJECT ***
-    Bullet
-    {
-        id: bullet
-
-        x: canon.x + 50
-        y: canon.y + 50
-        canonX: canon.x + 50
-        canonY: canon.y + 50
-        targetX: player.x + 25
-        targetY: player.y + 25
-
-    }
-//*** END OF BULLET OBJECT ***
-
     Controler
     {
         id: pad
@@ -190,18 +175,12 @@ Rectangle
                 target: canon
                 opacity: 0
                 visible: false
+                state: "disabled"
             }
 
             PropertyChanges
             {
                 target: pad
-                opacity: 0
-                visible: false
-            }
-
-            PropertyChanges
-            {
-                target: bullet
                 opacity: 0
                 visible: false
             }
@@ -230,6 +209,12 @@ Rectangle
             {
                 target: scoreTable
                 state: "level 1"
+            }
+
+            PropertyChanges
+            {
+                target: canon
+                state: "enabled"
             }
         },
 
