@@ -186,13 +186,6 @@ Rectangle
 
             PropertyChanges
             {
-                target: bullet
-                opacity: 0
-                visible: false
-            }
-
-            PropertyChanges
-            {
                 target: scoreTable
                 state: "init"
                 opacity: 0
