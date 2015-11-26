@@ -2,9 +2,12 @@ import QtQuick 2.4
 
 CanonForm {
 
+    id: cannon
+
     property int targetX
     property int targetY
 
+    // rotation (aka aiming ;) ) timer
     Timer {
         interval: 10; running: true; repeat: true
         onTriggered: image_canon.rotation = calcAngle()
@@ -17,6 +20,28 @@ CanonForm {
 
             return (angle);
         }
+    }
+
+    // shooting timer
+    Timer
+    {
+        interval: 2000; running: true; repeat: true
+
+        onTriggered: createBullet()
+    }
+
+    function createBullet()
+    {
+        var component = Qt.createComponent("qrc:/qml/Bullet.qml");
+
+        var position = mapToItem(null, 0, 0);
+        component.createObject(canvas, {"targetX": targetX,
+                                        "targetY": targetY,
+                                        "canonX":  position.x,
+                                        "canonY":  position.y
+                                       });
+
+        console.log("creating bullet");
     }
 
 }
