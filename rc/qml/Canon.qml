@@ -37,8 +37,8 @@ CanonForm {
         var component = Qt.createComponent("qrc:/qml/Bullet.qml");
 
         var position = mapToItem(null, 0, 0);
-        component.createObject(canvas, {"targetX": targetX,
-                                        "targetY": targetY,
+        component.createObject(canvas, {"targetX": targetX + 25,
+                                        "targetY": targetY + 25,
                                         "canonX":  position.x,
                                         "canonY":  position.y
                                        });
