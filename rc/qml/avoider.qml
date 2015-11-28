@@ -216,6 +216,13 @@ Rectangle
                 opacity: 0
                 visible: false
             }
+
+            PropertyChanges
+            {
+                target: ring
+                opacity: 0
+                visible: false
+            }
         },
 
         State
