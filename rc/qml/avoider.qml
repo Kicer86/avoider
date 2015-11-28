@@ -67,13 +67,12 @@ Rectangle
         // read pad every 20ms and update player's move
         Timer
         {
-
-           interval: 20; running: true; repeat: true
-           onTriggered:
-           {
+            interval: 20; running: true; repeat: true
+            onTriggered:
+            {
                player.x += pad.x_value * 2
                player.y += pad.y_value * 2
-           }
+            }
         }
     }
 
