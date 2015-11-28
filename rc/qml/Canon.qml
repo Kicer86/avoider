@@ -42,8 +42,6 @@ CanonForm {
                                         "canonX":  position.x,
                                         "canonY":  position.y
                                        });
-
-        console.log("creating bullet");
     }
 
     state: "disabled"

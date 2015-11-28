@@ -42,6 +42,19 @@ Rectangle
         targetY: player.y
     }
 //***   END OF CANON OBJECT ***
+
+    Rectangle
+    {
+        id: ring
+
+        x:      50
+        y:      50
+        width:  parent.width - (pad.width * pad.scale) - 70
+        height: parent.height - 50 - 50
+
+        border.color:  "#FF0000"
+    }
+
     
     Player
     {
@@ -51,16 +64,27 @@ Rectangle
         z: 1
         transformOrigin: Item.Center
 
-
-
+        // read pad every 20ms and update player's move
         Timer
         {
-           interval: 20; running: true; repeat: true
-           onTriggered:
-           {
-               player.x += pad.x_value * 2
-               player.y += pad.y_value * 2
-           }
+            interval: 20; running: true; repeat: true
+            onTriggered:
+            {
+                var dx = pad.x_value;
+                var dy = pad.y_value;
+
+                if (dx > 0 && player.x + player.width < ring.x + ring.width)
+                    player.x += dx * 2
+
+                if (dx < 0 && player.x > ring.x)
+                    player.x += dx * 2
+
+                if (dy > 0 && player.y + player.height < ring.y + ring.height)
+                    player.y += dy * 2
+
+                if (dy < 0 && player.y > ring.y)
+                    player.y += dy * 2
+            }
         }
     }
 
@@ -122,7 +146,6 @@ Rectangle
             onTriggered: scoreTable.score += scoreTable.increment
         }
     }
-
 
 
     Item
@@ -189,6 +212,13 @@ Rectangle
             {
                 target: scoreTable
                 state: "init"
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: ring
                 opacity: 0
                 visible: false
             }

@@ -19,7 +19,6 @@ BulletForm {
 
         onStopped:
         {
-            console.log("bullet dead");
             bullet.destroy();
         }
     }
