@@ -70,8 +70,20 @@ Rectangle
             interval: 20; running: true; repeat: true
             onTriggered:
             {
-               player.x += pad.x_value * 2
-               player.y += pad.y_value * 2
+                var dx = pad.x_value;
+                var dy = pad.y_value;
+
+                if (dx > 0 && player.x + player.width < ring.x + ring.width)
+                    player.x += dx * 2
+
+                if (dx < 0 && player.x > ring.x)
+                    player.x += dx * 2
+
+                if (dy > 0 && player.y + player.height < ring.y + ring.height)
+                    player.y += dy * 2
+
+                if (dy < 0 && player.y > ring.y)
+                    player.y += dy * 2
             }
         }
     }
