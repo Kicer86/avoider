@@ -148,7 +148,6 @@ Rectangle
     }
 
 
-
     Item
     {
         id: menu
