@@ -51,8 +51,7 @@ Rectangle
         z: 1
         transformOrigin: Item.Center
 
-
-
+        // read pad every 20ms and update player's move
         Timer
         {
            interval: 20; running: true; repeat: true
