@@ -42,6 +42,19 @@ Rectangle
         targetY: player.y
     }
 //***   END OF CANON OBJECT ***
+
+    Rectangle
+    {
+        id: ring
+
+        x:      50
+        y:      50
+        width:  parent.width - (pad.width * pad.scale) - 70
+        height: parent.height - 50 - 50
+
+        border.color:  "#FF0000"
+    }
+
     
     Player
     {
@@ -54,6 +67,7 @@ Rectangle
         // read pad every 20ms and update player's move
         Timer
         {
+
            interval: 20; running: true; repeat: true
            onTriggered:
            {
