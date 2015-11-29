@@ -40,7 +40,8 @@ CanonForm {
         component.createObject(canvas, {"targetX": targetX + 25,
                                         "targetY": targetY + 25,
                                         "canonX":  position.x,
-                                        "canonY":  position.y
+                                        "canonY":  position.y,
+                                        "z":       this.z
                                        });
     }
 

@@ -12,11 +12,21 @@ Rectangle
 
     z: 0
 
+    Background
+    {
+        id: background
+
+        z: 1
+
+        width:  canvas.width
+        height: canvas.height
+    }
+
     Controler
     {
         id: pad
 
-        z: 1
+        z: 5
 
         transformOrigin: Item.BottomRight
         scale: 0.5
@@ -30,7 +40,7 @@ Rectangle
     {
         id: canon
 
-        z: 1
+        z: 5
 
         transformOrigin: Item.Center
         scale: 0.5
@@ -43,16 +53,21 @@ Rectangle
     }
 //***   END OF CANON OBJECT ***
 
+    // arena
     Rectangle
     {
         id: ring
 
         x:      50
         y:      50
+
+        z:      3
+
         width:  parent.width - (pad.width * pad.scale) - 70
         height: parent.height - 50 - 50
 
         border.color:  "#FF0000"
+        color:         "transparent"
     }
 
     
@@ -61,7 +76,8 @@ Rectangle
         id: player
         x: 100
         y: 100
-        z: 1
+        z: 5
+
         transformOrigin: Item.Center
 
         // read pad every 20ms and update player's move
@@ -92,6 +108,8 @@ Rectangle
     ScoreTable
     {
         id: scoreTable
+
+        z: 5
 
         anchors.top:  parent.top
         anchors.left: parent.left
@@ -152,7 +170,7 @@ Rectangle
     {
         id: menu
 
-        z: 2
+        z: 10
 
         anchors.verticalCenter:   parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
@@ -219,6 +237,13 @@ Rectangle
             PropertyChanges
             {
                 target: ring
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: background
                 opacity: 0
                 visible: false
             }
