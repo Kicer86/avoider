@@ -114,6 +114,7 @@ Item
                 from: 0;
                 to: -xanimation.maxX;
                 duration: 20000
+                easing.type: Easing.InOutQuad
             }
 
             NumberAnimation
@@ -123,6 +124,7 @@ Item
                 from: -xanimation.maxX;
                 to: 0;
                 duration: 20000
+                easing.type: Easing.InOutQuad
             }
         }
 
@@ -140,6 +142,7 @@ Item
                 from: 0;
                 to: -yanimation.maxY;
                 duration: 18000
+                easing.type: Easing.InOutQuad
             }
 
             NumberAnimation
@@ -149,6 +152,7 @@ Item
                 from: -yanimation.maxY;
                 to: 0;
                 duration: 18000
+                easing.type: Easing.InOutQuad
             }
         }
     }
