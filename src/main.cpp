@@ -1,13 +1,21 @@
 
-#include <QGuiApplication>
-#include <QQuickView>
+#include <QApplication>
+#include <QQuickWidget>
+
+#include <QSplashScreen>
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-    QQuickView view;
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
+    QPixmap pixmap(":/img/background.jpg");
+    QSplashScreen splash(pixmap);
+    splash.show();
+    app.processEvents();
+
+    QQuickWidget view;
+    splash.finish(&view);
+    view.setResizeMode(QQuickWidget::SizeRootObjectToView);
     view.setSource(QUrl("qrc:/qml/avoider.qml"));
     view.show();
 
