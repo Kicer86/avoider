@@ -8,6 +8,7 @@
         <file>qml/CanonForm.ui.qml</file>
         <file>img/canon.png</file>
         <file>img/background.jpg</file>
+        <file>img/background2.jpg</file>
         <file>qml/Bullet.qml</file>
         <file>qml/ScoreTable.qml</file>
         <file>qml/BulletForm.ui.qml</file>
