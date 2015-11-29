@@ -66,7 +66,7 @@ Item
         }
     }
 
-    state: "background2"
+    state: "background1"
 
     states:
     [
