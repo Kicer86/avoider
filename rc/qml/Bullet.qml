@@ -31,4 +31,21 @@ BulletForm {
         return (a*(-10)+b)
     }
 
+    // collision timer
+    Timer
+    {
+        id: collisionTimer
+
+        interval: 1; running: true; repeat: true
+
+        onTriggered: checkCollision()
+    }
+
+    function checkCollision(){
+       // console.log(bullet.x)
+        console.log(bullet.x, " = ", targetX)
+        if(bullet.x===targetX){
+
+        }
+    }
 }

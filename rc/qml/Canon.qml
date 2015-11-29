@@ -44,6 +44,7 @@ CanonForm {
                                        });
     }
 
+
     state: "disabled"
 
     states:
@@ -57,6 +58,7 @@ CanonForm {
                 target: shootingTimer
                 running: true
             }
+
         },
 
         State
