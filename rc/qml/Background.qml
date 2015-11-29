@@ -5,13 +5,13 @@ Item
 {
     id: background
 
-
+    // background switcher
     Timer
     {
         running: true
         repeat:  true
 
-        interval: 6000
+        interval: 60000
 
         onTriggered:
         {
@@ -28,8 +28,16 @@ Item
 
         source: "qrc:/img/background.jpg"
 
-        visible: false
         opacity: 0
+
+        // enable image animation when image is visible
+        onOpacityChanged:
+        {
+            if (opacity > 0 && animation1.running == false)
+                animation1.running = true;
+            else if (opacity == 0 && animation1.running == true)
+                animation1.running = false;
+        }
     }
 
     Image
@@ -38,7 +46,6 @@ Item
 
         source: "qrc:/img/background2.jpg"
 
-        visible: false
         opacity: 0
 
         transformOrigin: Item.Center
@@ -48,6 +55,15 @@ Item
 
         anchors.horizontalCenter: background.horizontalCenter
         anchors.verticalCenter: background.verticalCenter
+
+        // enable image animation when image is visible
+        onOpacityChanged:
+        {
+            if (opacity > 0 && animation2.running == false)
+                animation2.running = true;
+            else if (opacity == 0 && animation2.running == true)
+                animation2.running = false;
+        }
     }
 
     state: "background2"
@@ -60,14 +76,7 @@ Item
 
             PropertyChanges
             {
-                target: animation1
-                running: true;
-            }
-
-            PropertyChanges
-            {
                 target: bkg_img1
-                visible: true;
                 opacity: 1
             }
         },
@@ -78,14 +87,7 @@ Item
 
             PropertyChanges
             {
-                target: animation2
-                running: true
-            }
-
-            PropertyChanges
-            {
                 target: bkg_img2
-                visible: true;
                 opacity: 1
             }
         }
@@ -166,6 +168,13 @@ Item
            duration: 20000
            running: false
        }
+    }
+
+    // state transition
+    transitions: Transition
+    {
+        NumberAnimation { target: bkg_img1; property: "opacity"; easing.type: Easing.InOutQuad; duration: 2000 }
+        NumberAnimation { target: bkg_img2; property: "opacity"; easing.type: Easing.InOutQuad; duration: 2000 }
     }
 
 }
