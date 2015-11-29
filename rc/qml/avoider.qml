@@ -14,6 +14,8 @@ Rectangle
 
     Background
     {
+        id: background
+
         z: 1
 
         width:  canvas.width
@@ -235,6 +237,13 @@ Rectangle
             PropertyChanges
             {
                 target: ring
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: background
                 opacity: 0
                 visible: false
             }
