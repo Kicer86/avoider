@@ -27,7 +27,7 @@ CanonForm {
     {
         id: shootingTimer
 
-        interval: 2000; running: true; repeat: false
+        interval: 2000; running: true; repeat: true
 
         onTriggered: createBullet()
     }

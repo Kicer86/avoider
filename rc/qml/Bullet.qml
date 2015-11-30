@@ -17,7 +17,6 @@ BulletForm {
         NumberAnimation { target: bullet; property: "x"; from: canonX; to: -10; duration: 5000 }
         NumberAnimation { target: bullet; property: "y"; from: canonY; to: calculateLeftEdge_y(canonX, canonY, targetX, targetY); duration: 5000 }
 
-
         onStopped:
         {
             bullet.destroy();
@@ -32,8 +31,9 @@ BulletForm {
         return (a*(-10)+b)
     }
 
-    // collision timer
-    Timer
+
+    // collision timer - it should be changed to interruption or smth like that
+   Timer
     {
         id: collisionTimer
 
@@ -42,23 +42,19 @@ BulletForm {
         onTriggered: checkCollision()
     }
 
-    function checkCollision(){
-       // console.log(bullet.x)
-        console.log(bullet.x, " = ", targetX)
-        if(bullet.x + 10 > targetX && bullet.x -10 < targetX){
-        console.log("KOLIZJA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        gameover.visible = true
 
+    function checkCollision(){  // This function check when bullet hits player
 
+       // console.log(bullet.x, " = ", canon.targetX)//uncomment if you wanna see coordinates
+
+        if(bullet.x + 10 > canon.targetX && bullet.x - 10 < canon.targetX){
+            if(bullet.y + 20 > canon.targetY && bullet.y - 20 < canon.targetY)
+            {
+                console.log("KOLIZJA!!!");
+                bullet.destroy()
+                bullet_anim.stop()
+                canvas.state = "gameOver"
+            }
         }
     }
-    Text {
-        id: gameover
-        visible: false
-        text: "GAME OVER!!!!!!!!!!!!!!"
-        font.family: "Helvetica"
-        font.pointSize: 40
-        color: "red"
-    }
-
 }
