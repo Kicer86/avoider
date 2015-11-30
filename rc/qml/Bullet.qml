@@ -17,6 +17,7 @@ BulletForm {
         NumberAnimation { target: bullet; property: "x"; from: canonX; to: -10; duration: 5000 }
         NumberAnimation { target: bullet; property: "y"; from: canonY; to: calculateLeftEdge_y(canonX, canonY, targetX, targetY); duration: 5000 }
 
+
         onStopped:
         {
             bullet.destroy();
@@ -36,7 +37,7 @@ BulletForm {
     {
         id: collisionTimer
 
-        interval: 1; running: true; repeat: true
+        interval: 20; running: true; repeat: true
 
         onTriggered: checkCollision()
     }
@@ -44,8 +45,20 @@ BulletForm {
     function checkCollision(){
        // console.log(bullet.x)
         console.log(bullet.x, " = ", targetX)
-        if(bullet.x===targetX){
+        if(bullet.x + 10 > targetX && bullet.x -10 < targetX){
+        console.log("KOLIZJA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        gameover.visible = true
+
 
         }
     }
+    Text {
+        id: gameover
+        visible: false
+        text: "GAME OVER!!!!!!!!!!!!!!"
+        font.family: "Helvetica"
+        font.pointSize: 40
+        color: "red"
+    }
+
 }

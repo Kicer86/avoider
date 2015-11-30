@@ -2,7 +2,6 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
 
-
 Rectangle
 {
     id: canvas
@@ -11,6 +10,16 @@ Rectangle
     height: 600
 
     z: 0
+
+    Background
+    {
+        id: background
+
+        z: 1
+
+        width:  canvas.width
+        height: canvas.height
+    }
 
     Controler
     {
@@ -251,8 +260,18 @@ Rectangle
         State
         {
             name: "gameOver"
+
+            PropertyChanges
+            {
+                target: background
+                opacity: 0
+                visible: false
+            }
+
         }
+
 
     ]
 
 }
+
