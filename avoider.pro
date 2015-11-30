@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core quick
+QT       += core quick quickwidgets
 
 TARGET = avoider
 TEMPLATE = app
