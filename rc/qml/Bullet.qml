@@ -21,7 +21,7 @@ BulletForm {
 
         onStopped:
         {
-            bullet.destroy();
+            disarm();
         }
     }
 
@@ -53,9 +53,7 @@ BulletForm {
             if(bullet.y + 20 > canon.targetY && bullet.y - 20 < canon.targetY)
             {
                 console.log("KOLIZJA!!!");
-                bullet.destroy()
-                bullet_anim.stop()
-                canvas.state = "gameOver"
+                disarm();
             }
         }
     }
