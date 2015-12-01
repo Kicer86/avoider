@@ -34,23 +34,15 @@ BulletForm {
     }
 
 
-    // collision timer - it should be changed to interruption or smth like that
-    Timer
-    {
-        id: collisionTimer
-
-        interval: 20; running: true; repeat: true
-
-        onTriggered: checkCollision()
-    }
+    onXChanged: checkCollision()
 
 
     function checkCollision(){  // This function check when bullet hits player
 
-       // console.log(bullet.x, " = ", canon.targetX)//uncomment if you wanna see coordinates
+        // console.log(bullet.x, " = ", canon.targetX)//uncomment if you wanna see coordinates
 
-        if(bullet.x + 10 > canon.targetX && bullet.x - 10 < canon.targetX){
-            if(bullet.y + 20 > canon.targetY && bullet.y - 20 < canon.targetY)
+        if( targetX - 20 < bullet.x && bullet.x < targetX + 20){
+            if(targetY - 20 < bullet.y && bullet.y < targetY + 20)
             {
                 console.log("KOLIZJA!!!");
                 targetHit();
