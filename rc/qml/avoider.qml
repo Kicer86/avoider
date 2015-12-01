@@ -36,7 +36,6 @@ Rectangle
     }
 
 //***   CANON OBJECT ***
-    property alias canon: canon
 
     Canon
     {
@@ -52,6 +51,11 @@ Rectangle
 
         targetX: player.x
         targetY: player.y
+
+        onTargetHit:
+        {
+            canvas.state = "gameOver"
+        }
     }
 
 
@@ -195,12 +199,14 @@ Rectangle
             onClicked: canvas.state = "game"
         }
     }
+
+
     Text{
         id: gameOverText
 
         transformOrigin: Item.Center
-        anchors.horizontalCenter:  canvas.horizontalCenter
-        anchors.verticalCenter: canvas.verticalCenter
+        anchors.horizontalCenter: canvas.horizontalCenter
+        anchors.verticalCenter:   canvas.verticalCenter
 
         text: "GAME OVER"
         color: "red"
@@ -303,7 +309,6 @@ Rectangle
             {
                 target: gameOverText
                 visible: true
-                z: 5
             }
 
             PropertyChanges

@@ -9,6 +9,8 @@ BulletForm {
     property int targetX
     property int targetY
 
+    signal targetHit()
+
     ParallelAnimation {
         id: bullet_anim
 
@@ -19,7 +21,7 @@ BulletForm {
 
         onStopped:
         {
-            bullet.destroy();
+            disarm();
         }
     }
 
@@ -33,7 +35,7 @@ BulletForm {
 
 
     // collision timer - it should be changed to interruption or smth like that
-   Timer
+    Timer
     {
         id: collisionTimer
 
@@ -51,10 +53,14 @@ BulletForm {
             if(bullet.y + 20 > canon.targetY && bullet.y - 20 < canon.targetY)
             {
                 console.log("KOLIZJA!!!");
-                bullet.destroy()
-                bullet_anim.stop()
-                canvas.state = "gameOver"
+                targetHit();
+                disarm();
             }
         }
+    }
+
+    function disarm()
+    {
+        bullet.destroy();
     }
 }

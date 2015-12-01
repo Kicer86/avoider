@@ -7,6 +7,9 @@ CanonForm {
     property int targetX
     property int targetY
 
+    signal stopped()
+    signal targetHit()
+
     // rotation (aka aiming ;) ) timer
     Timer {
         interval: 10; running: true; repeat: true
@@ -37,12 +40,15 @@ CanonForm {
         var component = Qt.createComponent("qrc:/qml/Bullet.qml");
 
         var position = mapToItem(null, 0, 0);
-        component.createObject(canvas, {"targetX": targetX + 25,
-                                        "targetY": targetY + 25,
-                                        "canonX":  position.x,
-                                        "canonY":  position.y,
-                                        "z":       this.z
-                                       });
+        var bullet = component.createObject(canvas, {"targetX": targetX + 25,
+                                                     "targetY": targetY + 25,
+                                                     "canonX":  position.x,
+                                                     "canonY":  position.y,
+                                                     "z":       this.z
+                                                    });
+
+        cannon.stopped.connect(bullet.disarm);   // when cannon is being stopped, disarm all active bullets
+        bullet.targetHit.connect(targetHit);     // when bullet hit target, emit canon's signal about it
     }
 
 
@@ -70,6 +76,11 @@ CanonForm {
             {
                 target: shootingTimer
                 running: false
+            }
+
+            onCompleted:
+            {
+                stopped()
             }
         }
     ]
