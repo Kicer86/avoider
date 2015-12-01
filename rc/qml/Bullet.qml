@@ -9,6 +9,8 @@ BulletForm {
     property int targetX
     property int targetY
 
+    //property alias deactivate: deactivate
+
     ParallelAnimation {
         id: bullet_anim
 
@@ -33,7 +35,7 @@ BulletForm {
 
 
     // collision timer - it should be changed to interruption or smth like that
-   Timer
+    Timer
     {
         id: collisionTimer
 
@@ -56,5 +58,10 @@ BulletForm {
                 canvas.state = "gameOver"
             }
         }
+    }
+
+    function disarm()
+    {
+        bullet.destroy();
     }
 }
