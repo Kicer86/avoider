@@ -8,6 +8,7 @@ CanonForm {
     property int targetY
 
     signal stopped()
+    signal targetHit()
 
     // rotation (aka aiming ;) ) timer
     Timer {
@@ -46,7 +47,8 @@ CanonForm {
                                                      "z":       this.z
                                                     });
 
-        cannon.stopped.connect(bullet.disarm);
+        cannon.stopped.connect(bullet.disarm);   // when cannon is being stopped, disarm all active bullets
+        bullet.targetHit.connect(targetHit);     // when bullet hit target, emit canon's signal about it
     }
 
 

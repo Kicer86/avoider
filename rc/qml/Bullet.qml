@@ -9,7 +9,7 @@ BulletForm {
     property int targetX
     property int targetY
 
-    //property alias deactivate: deactivate
+    signal targetHit()
 
     ParallelAnimation {
         id: bullet_anim
@@ -53,6 +53,7 @@ BulletForm {
             if(bullet.y + 20 > canon.targetY && bullet.y - 20 < canon.targetY)
             {
                 console.log("KOLIZJA!!!");
+                targetHit();
                 disarm();
             }
         }

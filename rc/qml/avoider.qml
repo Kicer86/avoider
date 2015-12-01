@@ -51,6 +51,11 @@ Rectangle
 
         targetX: player.x
         targetY: player.y
+
+        onTargetHit:
+        {
+            canvas.state = "gameOver"
+        }
     }
 
 
