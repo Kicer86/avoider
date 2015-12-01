@@ -2,9 +2,9 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
 
-
 Rectangle
 {
+    property alias canvas: canvas
     id: canvas
 
     width: 800
@@ -36,6 +36,8 @@ Rectangle
     }
 
 //***   CANON OBJECT ***
+    property alias canon: canon
+
     Canon
     {
         id: canon
@@ -51,6 +53,8 @@ Rectangle
         targetX: player.x
         targetY: player.y
     }
+
+
 //***   END OF CANON OBJECT ***
 
     // arena
@@ -88,6 +92,10 @@ Rectangle
             {
                 var dx = pad.x_value;
                 var dy = pad.y_value;
+
+                // Here we tell bullet where player is
+                canon.targetX = player.x
+                canon.targetY = player.y
 
                 if (dx > 0 && player.x + player.width < ring.x + ring.width)
                     player.x += dx * 2
@@ -187,6 +195,20 @@ Rectangle
             onClicked: canvas.state = "game"
         }
     }
+    Text{
+        id: gameOverText
+
+        transformOrigin: Item.Center
+        anchors.horizontalCenter:  canvas.horizontalCenter
+        anchors.verticalCenter: canvas.verticalCenter
+
+        text: "GAME OVER"
+        color: "red"
+        font.bold: true
+        font.pixelSize: 50
+        visible: false
+        z: 5
+    }
 
     // initial state
     state: "init"
@@ -276,8 +298,68 @@ Rectangle
         State
         {
             name: "gameOver"
+
+            PropertyChanges
+            {
+                target: gameOverText
+                visible: true
+                z: 5
+            }
+
+            PropertyChanges
+            {
+                target: menu
+                opacity: 0
+                visible: true
+            }
+
+            PropertyChanges
+            {
+                target: player
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: canon
+                opacity: 0
+                visible: false
+                state: "disabled"
+            }
+
+            PropertyChanges
+            {
+                target: pad
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: scoreTable
+                state: "init"
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: ring
+                opacity: 0
+                visible: false
+            }
+
+            PropertyChanges
+            {
+                target: background
+                opacity: 0
+                visible: false
+            }
+
         }
 
     ]
 
 }
+
