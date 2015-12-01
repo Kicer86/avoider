@@ -195,12 +195,14 @@ Rectangle
             onClicked: canvas.state = "game"
         }
     }
+
+
     Text{
         id: gameOverText
 
         transformOrigin: Item.Center
-        anchors.horizontalCenter:  canvas.horizontalCenter
-        anchors.verticalCenter: canvas.verticalCenter
+        anchors.horizontalCenter: canvas.horizontalCenter
+        anchors.verticalCenter:   canvas.verticalCenter
 
         text: "GAME OVER"
         color: "red"
@@ -303,7 +305,6 @@ Rectangle
             {
                 target: gameOverText
                 visible: true
-                z: 5
             }
 
             PropertyChanges
