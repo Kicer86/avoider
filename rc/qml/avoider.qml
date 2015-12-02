@@ -98,10 +98,6 @@ Rectangle
                 var dx = pad.x_value;
                 var dy = pad.y_value;
 
-                // Here we tell bullet where player is
-                canon.targetX = player.x
-                canon.targetY = player.y
-
                 if (dx > 0 && player.x + player.width < ring.x + ring.width)
                     player.x += dx * 2
 
@@ -113,6 +109,10 @@ Rectangle
 
                 if (dy < 0 && player.y > ring.y)
                     player.y += dy * 2
+
+                // Here we tell bullet where player is
+                canon.targetX = player.x
+                canon.targetY = player.y
             }
         }
     }

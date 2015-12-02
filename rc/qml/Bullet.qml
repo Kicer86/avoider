@@ -39,12 +39,10 @@ BulletForm {
 
     function checkCollision(){  // This function check when bullet hits player
 
-        // console.log(bullet.x, " = ", canon.targetX)//uncomment if you wanna see coordinates
-
-        if( canon.targetX - 20 < bullet.x && bullet.x < canon.targetX + 20){
-            if(canon.targetY - 20 < bullet.y && bullet.y < canon.targetY + 20)
+        if( canon.targetX - 25 < bullet.x && bullet.x < canon.targetX + 25)
+        {
+            if(canon.targetY - 25 < bullet.y && bullet.y < canon.targetY + 25)
             {
-                console.log("KOLIZJA!!!");
                 targetHit();
                 disarm();
             }
