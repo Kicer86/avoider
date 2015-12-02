@@ -4,23 +4,28 @@ BulletForm {
 
     id: bullet
 
-    property int canonX
-    property int canonY
+    property int startX
+    property int startY
     property int targetX
     property int targetY
 
+    property int playerX
+    property int playerY
+
     signal targetHit()
+    signal disarmed()
 
     ParallelAnimation {
         id: bullet_anim
 
         running: true
 
-        NumberAnimation { target: bullet; property: "x"; from: canonX; to: -10; duration: 5000 }
-        NumberAnimation { target: bullet; property: "y"; from: canonY; to: calculateLeftEdge_y(canonX, canonY, targetX, targetY); duration: 5000 }
+        NumberAnimation { target: bullet; property: "x"; from: startX; to: -10; duration: 5000 }
+        NumberAnimation { target: bullet; property: "y"; from: startY; to: calculateLeftEdge_y(startX, startY, targetX, targetY); duration: 5000 }
 
         onStopped:
         {
+            // bullet reached its litmis. Disarm it
             disarm();
         }
     }
@@ -34,25 +39,29 @@ BulletForm {
     }
 
 
-    onXChanged: checkCollision()
+    onXChanged:
+    {
+        checkCollision()
+    }
 
 
     function checkCollision(){  // This function check when bullet hits player
 
         // console.log(bullet.x, " = ", canon.targetX)//uncomment if you wanna see coordinates
 
-        if(targetX - 20 < bullet.x && bullet.x < targetX + 20){
-            if(targetY - 20 < bullet.y && bullet.y < targetY + 20)
+        if(playerX - 20 < bullet.x && bullet.x < playerX + 20){
+            if(playerY - 20 < bullet.y && bullet.y < playerY + 20)
             {
                 console.log("KOLIZJA!!!");
                 targetHit();
-                disarm();
             }
         }
     }
 
     function disarm()
     {
-        bullet.destroy();
+        console.log("disarming bullet")
+        bullet.disarmed();                  // emit signal about disarm
+        bullet.destroy();                   // destroy 'this'
     }
 }

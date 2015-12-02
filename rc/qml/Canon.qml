@@ -40,16 +40,22 @@ CanonForm {
         var component = Qt.createComponent("qrc:/qml/Bullet.qml");
 
         var position = mapToItem(null, 0, 0);
-        var bullet = component.createObject(canvas, {targetX: Qt.binding(function() {return targetX + 25} ),
-                                                     targetY: Qt.binding(function() {return targetY + 25} ),
-                                                     canonX:  position.x,
-                                                     canonY:  position.y,
+        var bullet = component.createObject(canvas, {playerX: Qt.binding(function() {return targetX + 25} ),
+                                                     playerY: Qt.binding(function() {return targetY + 25} ),
+                                                     startX:  position.x,
+                                                     startY:  position.y,
+                                                     targetX: targetX + 25,
+                                                     targetY: targetY + 25,
                                                      z:       canon.z
                                                     });
 
 
-        cannon.stopped.connect(bullet.disarm);   // when cannon is being stopped, disarm all active bullets
+        cannon.stopped.connect(bullet.disarm);   // when canon is being stopped, disarm all active bullets
         bullet.targetHit.connect(targetHit);     // when bullet hit target, emit canon's signal about it
+        bullet.disarmed.connect(function()       // when bullet dies, disconnect it from canon's signals
+        {
+            cannon.stopped.disconnect(bullet.disarm)
+        })
     }
 
 
