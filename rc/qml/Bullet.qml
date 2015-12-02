@@ -4,24 +4,41 @@ BulletForm {
 
     id: bullet
 
-    property int canonX
-    property int canonY
-    property int targetX
-    property int targetY
+    property real angle
+    property real speed
+
+    property int playerX
+    property int playerY
 
     signal targetHit()
+    signal disarmed()
 
-    ParallelAnimation {
+    Timer
+    {
         id: bullet_anim
 
         running: true
+        repeat:  true
+        interval: 16
 
-        NumberAnimation { target: bullet; property: "x"; from: canonX; to: -10; duration: 5000 }
-        NumberAnimation { target: bullet; property: "y"; from: canonY; to: calculateLeftEdge_y(canonX, canonY, targetX, targetY); duration: 5000 }
-
-        onStopped:
+        onRunningChanged:
         {
-            disarm();
+            if (running == false)
+            {
+                // bullet reached its litmis. Disarm it
+                disarm();
+            }
+        }
+
+        onTriggered:
+        {
+            bullet.x -= Math.cos(angle) * speed
+            bullet.y -= Math.sin(angle) * speed
+
+            checkCollision()
+
+            if (x < 0 || y < 0 || y > canvas.height)
+                running = false;
         }
     }
 
@@ -34,23 +51,20 @@ BulletForm {
     }
 
 
-    onXChanged: checkCollision()
-
-
     function checkCollision(){  // This function check when bullet hits player
 
-        if( canon.targetX - 25 < bullet.x && bullet.x < canon.targetX + 25)
-        {
-            if(canon.targetY - 25 < bullet.y && bullet.y < canon.targetY + 25)
+       	if(playerX - 25 < bullet.x && bullet.x < playerX + 25){
+            if(playerY - 25 < bullet.y && bullet.y < playerY + 25)
             {
                 targetHit();
-                disarm();
             }
         }
     }
 
     function disarm()
     {
-        bullet.destroy();
+        console.log("disarming bullet")
+        bullet.disarmed();                  // emit signal about disarm
+        bullet.destroy();                   // destroy 'this'
     }
 }
