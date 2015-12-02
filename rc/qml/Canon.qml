@@ -40,12 +40,13 @@ CanonForm {
         var component = Qt.createComponent("qrc:/qml/Bullet.qml");
 
         var position = mapToItem(null, 0, 0);
-        var bullet = component.createObject(canvas, {"targetX": targetX + 25,
-                                                     "targetY": targetY + 25,
-                                                     "canonX":  position.x,
-                                                     "canonY":  position.y,
-                                                     "z":       canon.z
+        var bullet = component.createObject(canvas, {targetX: Qt.binding(function() {return targetX + 25} ),
+                                                     targetY: Qt.binding(function() {return targetY + 25} ),
+                                                     canonX:  position.x,
+                                                     canonY:  position.y,
+                                                     z:       canon.z
                                                     });
+
 
         cannon.stopped.connect(bullet.disarm);   // when cannon is being stopped, disarm all active bullets
         bullet.targetHit.connect(targetHit);     // when bullet hit target, emit canon's signal about it

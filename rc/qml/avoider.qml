@@ -36,7 +36,6 @@ Rectangle
     }
 
 //***   CANON OBJECT ***
-    property alias canon: canon
 
     Canon
     {

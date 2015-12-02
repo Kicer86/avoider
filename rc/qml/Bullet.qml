@@ -41,8 +41,8 @@ BulletForm {
 
         // console.log(bullet.x, " = ", canon.targetX)//uncomment if you wanna see coordinates
 
-        if( canon.targetX - 20 < bullet.x && bullet.x < canon.targetX + 20){
-            if(canon.targetY - 20 < bullet.y && bullet.y < canon.targetY + 20)
+        if(targetX - 20 < bullet.x && bullet.x < targetX + 20){
+            if(targetY - 20 < bullet.y && bullet.y < targetY + 20)
             {
                 console.log("KOLIZJA!!!");
                 targetHit();
