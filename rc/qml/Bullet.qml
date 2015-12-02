@@ -4,10 +4,8 @@ BulletForm {
 
     id: bullet
 
-    property int startX
-    property int startY
-    property int targetX
-    property int targetY
+    property real angle
+    property real speed
 
     property int playerX
     property int playerY
@@ -15,18 +13,32 @@ BulletForm {
     signal targetHit()
     signal disarmed()
 
-    ParallelAnimation {
+    Timer
+    {
         id: bullet_anim
 
         running: true
+        repeat:  true
+        interval: 16
 
-        NumberAnimation { target: bullet; property: "x"; from: startX; to: -10; duration: 5000 }
-        NumberAnimation { target: bullet; property: "y"; from: startY; to: calculateLeftEdge_y(startX, startY, targetX, targetY); duration: 5000 }
-
-        onStopped:
+        onRunningChanged:
         {
-            // bullet reached its litmis. Disarm it
-            disarm();
+            if (running == false)
+            {
+                // bullet reached its litmis. Disarm it
+                disarm();
+            }
+        }
+
+        onTriggered:
+        {
+            bullet.x -= Math.cos(angle) * speed
+            bullet.y -= Math.sin(angle) * speed
+
+            checkCollision()
+
+            if (x < 0 || y < 0 || y > canvas.height)
+                running = false;
         }
     }
 
@@ -36,12 +48,6 @@ BulletForm {
         var a = Math.atan((to_y-from_y)/(to_x-from_x))
         var b = to_y - a*to_x
         return (a*(-10)+b)
-    }
-
-
-    onXChanged:
-    {
-        checkCollision()
     }
 
 
