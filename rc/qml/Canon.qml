@@ -44,7 +44,7 @@ CanonForm {
                                                      "targetY": targetY + 25,
                                                      "canonX":  position.x,
                                                      "canonY":  position.y,
-                                                     "z":       this.z
+                                                     "z":       canon.z
                                                     });
 
         cannon.stopped.connect(bullet.disarm);   // when cannon is being stopped, disarm all active bullets
