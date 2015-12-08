@@ -13,5 +13,6 @@
         <file>qml/ScoreTable.qml</file>
         <file>qml/BulletForm.ui.qml</file>
         <file>qml/Background.qml</file>
+        <file>qml/avoider.qm</file>
     </qresource>
 </RCC>

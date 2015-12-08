@@ -194,7 +194,7 @@ Rectangle
             anchors.topMargin:        parent.Top
             anchors.horizontalCenter: parent.horizontalCenter
 
-            text: "Begin game"
+            text: qsTr("Begin game")
 
             onClicked: canvas.state = "game"
         }
@@ -208,7 +208,7 @@ Rectangle
         anchors.horizontalCenter: canvas.horizontalCenter
         anchors.verticalCenter:   canvas.verticalCenter
 
-        text: "GAME OVER"
+        text: qsTr("GAME OVER")
         color: "red"
         font.bold: true
         font.pixelSize: 50
