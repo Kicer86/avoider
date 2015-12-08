@@ -4,11 +4,17 @@
 #include <QQuickWidget>
 #include <QScreen>
 #include <QSplashScreen>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     QQuickWidget view;
+
+    QTranslator translator;
+
+    bool ddd = translator.load("avoider", ":/qml");
+    bool ggg = app.installTranslator(&translator);
 
 #if defined(Q_OS_ANDROID)
 
