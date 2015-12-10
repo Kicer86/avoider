@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
 
-    bool ddd = translator.load("avoider", ":/qml");
+    bool ddd = translator.load("avoider_pl", ":/tr");
     bool ggg = app.installTranslator(&translator);
 
 #if defined(Q_OS_ANDROID)

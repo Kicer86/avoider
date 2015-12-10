@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/tr">
-        <file>avoider.qm</file>
+        <file alias="avoider_pl.qm">qm/avoider_pl.qm</file>
     </qresource>
 </RCC>
