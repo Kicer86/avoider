@@ -1,4 +1,6 @@
 
+#include <cassert>
+
 #include <QApplication>
 #include <QPainter>
 #include <QQuickWidget>
@@ -13,8 +15,10 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
 
-    bool ddd = translator.load("avoider", ":/qml");
-    bool ggg = app.installTranslator(&translator);
+    const bool load = translator.load("avoider_pl", ":/tr");
+    const bool install = app.installTranslator(&translator);
+
+    assert(load && install);
 
 #if defined(Q_OS_ANDROID)
 
