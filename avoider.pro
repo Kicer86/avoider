@@ -26,9 +26,9 @@ DISTFILES += \
 OTHER_FILES+=
 
 RESOURCES += \
-    rc/img/img.qrc  \
-    rc/tr/tr.qrc    \
-    rc/qml/qml.qrc
+    rc/img.qrc  \
+    rc/tr.qrc    \
+    rc/qml.qrc
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
