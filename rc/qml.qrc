@@ -9,6 +9,7 @@
         <file>qml/enemies/Submarine.qml</file>
         <file>qml/enemies/canons/BaseCanon.qml</file>
         <file>qml/enemies/canons/BaseCanonForm.ui.qml</file>
+        <file>qml/enemies/canons/Horizontal.qml</file>
         <file>qml/enemies/canons/missiles/Bullet.qml</file>
         <file>qml/enemies/canons/missiles/BulletForm.ui.qml</file>
     </qresource>
