@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
 
+import "enemies"
+
 Rectangle
 {
     property alias canvas: canvas
@@ -35,16 +37,13 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-//***   CANON OBJECT ***
+//*** SUBMARINE OBJECT ***
 
-    Canon
+    Submarine
     {
-        id: canon
+        id: submarine
 
         z: 5
-
-        transformOrigin: Item.Center
-        scale: 0.5
 
         anchors.right: canvas.right
         anchors.verticalCenter: canvas.verticalCenter
@@ -59,7 +58,7 @@ Rectangle
     }
 
 
-//***   END OF CANON OBJECT ***
+//*** END OF SUBMARINE OBJECT ***
 
     // arena
     Rectangle
@@ -110,8 +109,8 @@ Rectangle
                     player.y += dy * 2
 
                 // Here we tell bullet where player is
-                canon.targetX = player.x
-                canon.targetY = player.y
+                submarine.targetX = player.x
+                submarine.targetY = player.y
             }
         }
     }
@@ -241,7 +240,7 @@ Rectangle
 
             PropertyChanges
             {
-                target: canon
+                target: submarine
                 opacity: 0
                 visible: false
                 state: "disabled"
@@ -296,7 +295,7 @@ Rectangle
 
             PropertyChanges
             {
-                target: canon
+                target: submarine
                 state: "enabled"
             }
         },
@@ -327,7 +326,7 @@ Rectangle
 
             PropertyChanges
             {
-                target: canon
+                target: submarine
                 opacity: 0
                 visible: false
                 state: "disabled"

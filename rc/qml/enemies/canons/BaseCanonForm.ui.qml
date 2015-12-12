@@ -13,7 +13,7 @@ Item {
         y: 0
         width: 100
         height: 100
-        source: "../img/canon.png"
+        source: "qrc:/img/canon.png"
     }
 }
 
