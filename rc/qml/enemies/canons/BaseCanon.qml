@@ -1,5 +1,6 @@
 import QtQuick 2.4
 
+
 BaseCanonForm {
 
     id: cannon
@@ -47,7 +48,7 @@ BaseCanonForm {
 
     function createBullet()
     {
-        var component = Qt.createComponent("qrc:/qml/Bullet.qml");
+        var component = Qt.createComponent("qrc:/qml/enemies/canons/missiles/Bullet.qml");
 
         var position = mapToItem(null, 0, 0);
         var bullet = component.createObject(canvas, {playerX: Qt.binding(function() {return targetX + 25} ),
