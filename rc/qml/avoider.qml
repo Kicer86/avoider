@@ -2,6 +2,9 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
 
+import "enemies"
+import "enemies/canons"
+
 Rectangle
 {
     property alias canvas: canvas
@@ -37,7 +40,7 @@ Rectangle
 
 //***   CANON OBJECT ***
 
-    Canon
+    BaseCanon
     {
         id: canon
 
