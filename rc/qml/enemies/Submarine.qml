@@ -10,6 +10,9 @@ Rectangle
     width:  100
     height: 50
 
+    color: "#ff0000"
+    radius: 100
+
     property int targetX
     property int targetY
 
