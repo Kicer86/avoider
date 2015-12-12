@@ -6,6 +6,7 @@
         <file>qml/Player.qml</file>        
         <file>qml/ScoreTable.qml</file>
         <file>qml/Background.qml</file>
+        <file>qml/enemies/Submarine.qml</file>
         <file>qml/enemies/canons/BaseCanon.qml</file>
         <file>qml/enemies/canons/BaseCanonForm.ui.qml</file>
         <file>qml/enemies/canons/missiles/Bullet.qml</file>
