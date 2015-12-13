@@ -103,5 +103,10 @@ BaseCanonForm {
         }
     ]
 
+    Component.onDestruction:
+    {
+        stopped()
+    }
+
 }
 
