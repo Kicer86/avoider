@@ -13,11 +13,25 @@ Item
 
     state: "inactive"
 
+    ListModel
+    {
+        id: enemiesList
+    }
+
     states:
     [
         State
         {
             name: "inactive"
+
+            onCompleted:
+            {
+                while(enemiesList.count > 0)
+                {
+                    enemiesList.get(0).obj.destroy();
+                    enemiesList.remove(0);
+                }
+            }
         },
 
         State
@@ -39,6 +53,8 @@ Item
                                                      });
 
                 submarine.targetHit.connect(controller.playerHit);
+
+                enemiesList.append({"obj": submarine})
             }
         },
 
