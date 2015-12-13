@@ -11,6 +11,12 @@
 
 void changeLocale(QString &locale);
 
+class Locale
+{
+   public:
+      QTranslator file; // Translator file
+};
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -52,22 +58,22 @@ int main(int argc, char *argv[])
 
 // Locale switcher
 void changeLocale(QString &locale){
-    QTranslator translator;
+    Locale translator;
 
     if (locale == "pl_PL")
     {
-      const bool load = translator.load("avoider_pl", ":/tr");    // Loading polish translation
-      const bool install = QApplication::installTranslator(&translator);
+      const bool load = translator.file.load("avoider_pl", ":/tr");    // Loading polish translation
+      const bool install = QApplication::installTranslator(&translator.file);
           assert(load && install);    // Assert for loading translation
     }else if (locale == "de_DE")
     {
-      const bool load = translator.load("avoider_de", ":/tr");    // Loading german translation
-      const bool install = QApplication::installTranslator(&translator);
+      const bool load = translator.file.load("avoider_de", ":/tr");    // Loading german translation
+      const bool install = QApplication::installTranslator(&translator.file);
           assert(load && install);    // Assert for loading translation
     }else if (locale == "fr_FR")
     {
-      const bool load = translator.load("avoider_fr", ":/tr");    // Loading french translation
-      const bool install = QApplication::installTranslator(&translator);
+      const bool load = translator.file.load("avoider_fr", ":/tr");    // Loading french translation
+      const bool install = QApplication::installTranslator(&translator.file);
           assert(load && install);    // Assert for loading translation
     }else
     {
