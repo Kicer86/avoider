@@ -41,7 +41,6 @@ Rectangle
         }
     }
 
-
     state: "disabled"
 
     states:
@@ -56,4 +55,33 @@ Rectangle
             name: "disabled"
         }
     ]
+
+
+    SequentialAnimation
+    {
+        id:      vertical_move
+        loops:   Animation.Infinite
+        running: true
+
+        NumberAnimation
+        {
+            target: submarine;
+            property: "y";
+            from: 0;
+            to: 300;
+            duration: 5000
+            easing.type: Easing.InOutQuad
+        }
+
+        NumberAnimation
+        {
+            target: submarine;
+            property: "y";
+            from: 300;
+            to: 0;
+            duration: 5000
+            easing.type: Easing.InOutQuad
+        }
+    }
+
 }
