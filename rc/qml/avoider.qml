@@ -37,29 +37,19 @@ Rectangle
         anchors.bottom: canvas.bottom
     }
 
-//*** SUBMARINE OBJECT ***
-
-    Submarine
+    LevelController
     {
-        id: submarine
+        id: levelController
+        enemies_z_axis: 5
 
-        z: 5
+        playerX: player.x
+        playerY: player.y
 
-        anchors.right: canvas.right
-        anchors.verticalCenter: canvas.verticalCenter
-
-        targetX: player.x
-        targetY: player.y
-
-        onTargetHit:
+        onPlayerHit:
         {
             canvas.state = "gameOver"
-            rootItem.selectLanguage("de");
         }
     }
-
-
-//*** END OF SUBMARINE OBJECT ***
 
     // arena
     Rectangle
@@ -108,10 +98,6 @@ Rectangle
 
                 if (dy < 0 && player.y > ring.y)
                     player.y += dy * 2
-
-                // Here we tell bullet where player is
-                submarine.targetX = player.x
-                submarine.targetY = player.y
             }
         }
     }
@@ -241,10 +227,8 @@ Rectangle
 
             PropertyChanges
             {
-                target: submarine
-                opacity: 0
-                visible: false
-                state: "disabled"
+                target: levelController
+                state: "inactive"
             }
 
             PropertyChanges
@@ -296,8 +280,8 @@ Rectangle
 
             PropertyChanges
             {
-                target: submarine
-                state: "enabled"
+                target: levelController
+                state: "level_01"
             }
         },
 
@@ -327,10 +311,8 @@ Rectangle
 
             PropertyChanges
             {
-                target: submarine
-                opacity: 0
-                visible: false
-                state: "disabled"
+                target: levelController
+                state: "inactive"
             }
 
             PropertyChanges
