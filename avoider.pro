@@ -10,9 +10,11 @@ TARGET = avoider
 TEMPLATE = app
 
 
-SOURCES += src/main.cpp
+SOURCES += src/main.cpp \
+    src/locale.cpp
 
-HEADERS  +=
+HEADERS  += \
+    src/locale.h
 
 FORMS    +=
 
