@@ -8,9 +8,6 @@
 #include <QString>
 
 #include "locale.h"  // defines Locale class
-//#include "locale.cpp"
-
-//Locale void changeLocale(QString &locale);
 
 int main(int argc, char *argv[])
 {

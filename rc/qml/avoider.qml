@@ -54,7 +54,6 @@ Rectangle
         onTargetHit:
         {
             canvas.state = "gameOver"
-            rootItem.selectLanguage("de");
         }
     }
 
