@@ -13,5 +13,6 @@
         <file>qml/enemies/canons/Horizontal.qml</file>
         <file>qml/enemies/canons/missiles/Bullet.qml</file>
         <file>qml/enemies/canons/missiles/BulletForm.ui.qml</file>
+        <file>qml/levels/Level_01.qml</file>
     </qresource>
 </RCC>
