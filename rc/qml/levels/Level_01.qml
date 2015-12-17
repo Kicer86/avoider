@@ -22,7 +22,7 @@ Item
         anchors.right: level.right
 
 
-        Horizontal
+        HorizontalCanon
         {
             id: canon
 
