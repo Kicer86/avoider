@@ -204,6 +204,18 @@ Rectangle
 
             State
             {
+                name: "visible_bottom"
+
+                AnchorChanges
+                {
+                    target: menu
+
+                    anchors.bottom: canvas.bottom
+                }
+            },
+
+            State
+            {
                 name: "invisible"
 
                 AnchorChanges
@@ -322,6 +334,12 @@ Rectangle
             {
                 target: gameOverText
                 visible: true
+            }
+
+            PropertyChanges
+            {
+                target: menu
+                state:  "visible_bottom"
             }
 
             PropertyChanges
