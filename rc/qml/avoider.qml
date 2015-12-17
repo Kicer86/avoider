@@ -6,13 +6,14 @@ import "enemies"
 
 Rectangle
 {
-    property alias canvas: canvas
     id: canvas
 
     width: 800
     height: 600
 
     z: 0
+
+    property alias canvas: canvas
 
     Background
     {
@@ -169,21 +170,57 @@ Rectangle
         id: menu
 
         z: 10
+        height: childrenRect.height
 
-        anchors.verticalCenter:   parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: canvas.horizontalCenter
 
         Button
         {
             id: beginButton
 
-            anchors.topMargin:        parent.Top
+            anchors.top:              parent.top
             anchors.horizontalCenter: parent.horizontalCenter
 
             text: qsTr("Begin game")
 
             onClicked: canvas.state = "game"
         }
+
+        state: "invisible"
+
+        states:
+        [
+            State
+            {
+                name: "visible"
+
+                AnchorChanges
+                {
+                    target: menu
+
+                    anchors.verticalCenter: canvas.verticalCenter
+                }
+            },
+
+            State
+            {
+                name: "invisible"
+
+                AnchorChanges
+                {
+                    target: menu
+
+                    anchors.bottom: canvas.top
+                }
+            }
+
+        ]
+
+        transitions:
+            Transition
+            {
+                AnchorAnimation { duration: 500 }
+            }
     }
 
 
@@ -214,8 +251,7 @@ Rectangle
             PropertyChanges
             {
                 target: menu
-                opacity: 1
-                visible: true
+                state: "visible"
             }
 
             PropertyChanges
@@ -267,13 +303,6 @@ Rectangle
 
             PropertyChanges
             {
-                target: menu
-                opacity: 0
-                visible: false
-            }
-
-            PropertyChanges
-            {
                 target: scoreTable
                 state: "level 1"
             }
@@ -292,13 +321,6 @@ Rectangle
             PropertyChanges
             {
                 target: gameOverText
-                visible: true
-            }
-
-            PropertyChanges
-            {
-                target: menu
-                opacity: 0
                 visible: true
             }
 
