@@ -15,7 +15,7 @@ Item
 
     ListModel
     {
-        id: enemiesList
+        id: activeLevel
     }
 
     states:
@@ -26,10 +26,10 @@ Item
 
             onCompleted:
             {
-                while(enemiesList.count > 0)
+                while(activeLevel.count > 0)
                 {
-                    enemiesList.get(0).obj.destroy();
-                    enemiesList.remove(0);
+                    activeLevel.get(0).obj.destroy();
+                    activeLevel.remove(0);
                 }
             }
         },
@@ -40,21 +40,21 @@ Item
 
             onCompleted:
             {
-                var submarineComponent = Qt.createComponent("qrc:/qml/enemies/Submarine.qml");
+                var levelComponent = Qt.createComponent("qrc:/qml/levels/Level_01.qml");
 
                 var position = mapToItem(null, 0, 0);
-                var submarine = submarineComponent.createObject(canvas,
+                var level = levelComponent.createObject(canvas,
                                                      {
                                                          targetX: Qt.binding(function() {return playerX} ),
                                                          targetY: Qt.binding(function() {return playerY} ),
-                                                         "anchors.right": canvas.right,
-                                                         state: "enabled",
-                                                         z: enemies_z_axis
+                                                         z:       enemies_z_axis,
+                                                         width:   canvas.width,
+                                                         height:  canvas.height,
                                                      });
 
-                submarine.targetHit.connect(controller.playerHit);
+                level.targetHit.connect(controller.playerHit);
 
-                enemiesList.append({"obj": submarine})
+                activeLevel.append({"obj": level})
             }
         },
 
