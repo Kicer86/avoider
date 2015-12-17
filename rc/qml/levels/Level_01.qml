@@ -2,6 +2,7 @@
 import QtQuick 2.0
 
 import "../enemies"
+import "../enemies/canons"
 
 Item
 {
@@ -18,11 +19,32 @@ Item
         id: submarine
 
         z: level.z
-        state: "enabled"
         anchors.right: level.right
 
-        targetX: level.targetX
-        targetY: level.targetY
+
+        Horizontal
+        {
+            id: canon
+
+            z: submarine.z
+
+            transformOrigin: Item.Left
+            scale: 0.5
+
+            anchors.left: submarine.left
+            anchors.verticalCenter: submarine.verticalCenter
+
+            targetX: level.targetX
+            targetY: level.targetY
+
+            state: "enabled"
+
+            onTargetHit:
+            {
+                level.targetHit()
+            }
+        }
+
 
         SequentialAnimation
         {
@@ -50,8 +72,6 @@ Item
                 easing.type: Easing.InOutQuad
             }
         }
-
-        onTargetHit: level.targetHit()
 
     }
 }
