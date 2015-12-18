@@ -7,6 +7,7 @@ Item
     width: 50
     height: 50
 
+    signal hit()
 
     Rectangle
     {

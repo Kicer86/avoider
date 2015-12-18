@@ -6,8 +6,7 @@ Item
 
     property int enemies_z_axis: 0
 
-    property int playerX
-    property int playerY
+    property Player player
 
     signal playerHit()
 
@@ -42,19 +41,21 @@ Item
             {
                 var levelComponent = Qt.createComponent("qrc:/qml/levels/Level_01.qml");
 
-                var position = mapToItem(null, 0, 0);
-                var level = levelComponent.createObject(canvas,
-                                                     {
-                                                         targetX: Qt.binding(function() {return playerX} ),
-                                                         targetY: Qt.binding(function() {return playerY} ),
-                                                         z:       enemies_z_axis,
-                                                         width:   canvas.width,
-                                                         height:  canvas.height,
-                                                     });
+                if (levelComponent.status == Component.Error)
+                    console.log("Level loading error: " + levelComponent.errorString())
+                else
+                {
+                    var position = mapToItem(null, 0, 0);
+                    var level = levelComponent.createObject(canvas,
+                                                         {
+                                                             target : Qt.binding(function() {return player} ),
+                                                             z:       enemies_z_axis,
+                                                             width:   canvas.width,
+                                                             height:  canvas.height,
+                                                         });
 
-                level.targetHit.connect(controller.playerHit);
-
-                activeLevel.append({"obj": level})
+                    activeLevel.append({"obj": level})
+                }
             }
         },
 

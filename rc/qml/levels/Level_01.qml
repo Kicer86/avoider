@@ -3,15 +3,13 @@ import QtQuick 2.0
 
 import "../enemies"
 import "../enemies/canons"
+import ".."
 
 Item
 {
     id: level
 
-    property int targetX
-    property int targetY
-
-    signal targetHit()
+    property Player target
 
     Submarine
     {
@@ -34,15 +32,9 @@ Item
             anchors.left: submarine.left
             anchors.verticalCenter: submarine.verticalCenter
 
-            targetX: level.targetX
-            targetY: level.targetY
+            target: level.target
 
             state: "enabled"
-
-            onTargetHit:
-            {
-                level.targetHit()
-            }
         }
 
 

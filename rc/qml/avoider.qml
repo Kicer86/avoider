@@ -43,13 +43,7 @@ Rectangle
         id: levelController
         enemies_z_axis: 5
 
-        playerX: player.x
-        playerY: player.y
-
-        onPlayerHit:
-        {
-            canvas.state = "gameOver"
-        }
+        player: player
     }
 
     // arena
@@ -100,6 +94,11 @@ Rectangle
                 if (dy < 0 && player.y > ring.y)
                     player.y += dy * 2
             }
+        }
+
+        onHit:
+        {
+            canvas.state = "gameOver"
         }
     }
 
@@ -304,8 +303,8 @@ Rectangle
             PropertyChanges
             {
                 target: background
-                opacity: 0
-                visible: false
+                opacity: 1
+                visible: true
             }
         },
 
