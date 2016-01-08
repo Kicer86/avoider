@@ -3,5 +3,6 @@
         <file>img/canon.png</file>
         <file>img/background.jpg</file>
         <file>img/background2.jpg</file>
+        <file>img/background.svg</file>
     </qresource>
 </RCC>

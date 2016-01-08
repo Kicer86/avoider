@@ -36,9 +36,9 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 qtPrepareTool(LRELEASE, lrelease)
 
-TRANSLATIONS += rc/tr/avoider_pl.ts
-TRANSLATIONS += rc/tr/avoider_de.ts
-TRANSLATIONS += rc/tr/avoider_fr.ts
+TRANSLATIONS += rc/tr/avoider_pl.ts \
+                rc/tr/avoider_de.ts \
+                rc/tr/avoider_fr.ts
 
 QMAKE_EXTRA_COMPILERS += lrelease
 lrelease.input         = TRANSLATIONS
