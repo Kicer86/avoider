@@ -27,7 +27,7 @@ Item
         id: bkg_img1
 
         source: "qrc:/img/background.svg"
-        scale : 0.9
+        sourceSize.height: parent.height    // 'sourceSize' is a better solution for vector graphics than 'scale' - scale made pixels
         opacity: 0
 
         // enable image animation when image is visible
