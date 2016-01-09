@@ -1,5 +1,7 @@
 import QtQuick 2.4
 
+import "../../.."
+
 BulletForm {
 
     id: bullet
@@ -7,10 +9,8 @@ BulletForm {
     property real angle
     property real speed
 
-    property int playerX
-    property int playerY
+    property Player player
 
-    signal targetHit()
     signal disarmed()
 
     Timer
@@ -51,12 +51,12 @@ BulletForm {
     }
 
 
-    function checkCollision(){  // This function check when bullet hits player
+    function checkCollision(){  // This function checks when bullet hits player
 
-       	if(playerX - 25 < bullet.x && bullet.x < playerX + 25){
-            if(playerY - 25 < bullet.y && bullet.y < playerY + 25)
+        if(player.x < bullet.x && bullet.x < (player.x + player.width)) {
+            if(player.y < bullet.y && bullet.y < (player.y + player.height))
             {
-                targetHit();
+                player.hit();
             }
         }
     }
