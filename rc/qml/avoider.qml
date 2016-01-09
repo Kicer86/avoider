@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
 
+import avoider.scaler 1.0 as Scaler
+
 import "enemies"
 
 Rectangle
@@ -71,7 +73,15 @@ Rectangle
         y: 100
         z: 5
 
+        scale: Scaler.AvoiderApi.xScale
+
         transformOrigin: Item.Center
+
+        transform: Scale
+        {
+            xScale: Scaler.AvoiderApi.xScale
+            yScale: Scaler.AvoiderApi.yScale
+        }
 
         // read pad every 20ms and update player's move
         Timer
