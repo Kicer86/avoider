@@ -6,8 +6,8 @@
 
 namespace
 {
-    QRect g_base;
-    QRect g_real;
+    QSize g_base;
+    QSize g_real;
 
     double g_xScale;
     double g_yScale;
@@ -23,12 +23,38 @@ namespace
 }
 
 
-void setup(const QRect& base, const QRect& real)
+void Scaler::setup(const QSize& base, const QSize& real)
 {
     g_base = base;
     g_real = real;
-    g_xScale = base.width() / real.width();
-    g_yScale = base.height() / real.height();
+
+    recalculate();
 
     qmlRegisterSingletonType("avoider.scaler", 1, 0, "AvoiderApi", scaleProvider);
+}
+
+
+
+void Scaler::updateRealWidth(int w)
+{
+    g_real.setWidth(w);
+
+    recalculate();
+}
+
+void Scaler::updateRealHeight(int h)
+{
+    g_real.setHeight(h);
+
+    recalculate();
+}
+
+
+void Scaler::recalculate()
+{
+    if (g_real.isEmpty() == false)
+    {
+        g_xScale = g_base.width()  / g_real.width();
+        g_yScale = g_base.height() / g_real.height();
+    }
 }

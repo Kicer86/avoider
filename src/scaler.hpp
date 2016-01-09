@@ -2,12 +2,18 @@
 #define SCALER_HPP
 
 
-class QRect;
+class QSize;
 
 
-namespace Scaler
+struct Scaler
 {
-    void setup(const QRect& base, const QRect& real);
-}
+        static void setup(const QSize& base, const QSize& real);
+
+        static void updateRealWidth(int);
+        static void updateRealHeight(int);
+
+    private:
+        static void recalculate();
+};
 
 #endif // SCALER_HPP
