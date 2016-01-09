@@ -11,14 +11,16 @@ TEMPLATE = app
 
 
 SOURCES += src/main.cpp \
-    src/locale.cpp
+    src/locale.cpp \
+    src/scaler.cpp
 
 HEADERS  += \
-    src/locale.h
+    src/locale.h \
+    src/scaler.hpp
 
 FORMS    +=
 
-CONFIG += mobility
+CONFIG += mobility c++11
 MOBILITY = 
 
 DISTFILES += \
