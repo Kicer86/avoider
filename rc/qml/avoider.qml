@@ -73,7 +73,7 @@ Rectangle
         y: 100
         z: 5
 
-        scale: Scaler.AvoiderApi.xScale
+        scale: Scaler.AvoiderApi.scale
 
         transformOrigin: Item.Center
 

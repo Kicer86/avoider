@@ -9,7 +9,6 @@ QT       += core quick quickwidgets
 TARGET = avoider
 TEMPLATE = app
 
-
 SOURCES += src/main.cpp \
     src/locale.cpp \
     src/scaler.cpp
@@ -25,7 +24,6 @@ MOBILITY =
 
 DISTFILES += \
     android/AndroidManifest.xml
-
 
 OTHER_FILES+=
 

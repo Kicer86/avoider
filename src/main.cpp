@@ -20,9 +20,7 @@ int main(int argc, char *argv[])
     Locale trans_change;
     trans_change.changeLocale(locale);
 
-    Scaler::setup(QSize(800, 600), view.size());
-    QObject::connect(&view, &QQuickView::widthChanged, &Scaler::updateRealWidth);
-    QObject::connect(&view, &QQuickView::heightChanged, &Scaler::updateRealHeight);
+    Scaler scaler(QSize(800, 600), &view);
 
 #if defined(Q_OS_ANDROID)
 

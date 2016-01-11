@@ -1,60 +1,81 @@
 
 #include "scaler.hpp"
 
+#include <cassert>
+
 #include <QtQml>
+#include <QWindow>
 
 
 namespace
 {
-    QSize g_base;
-    QSize g_real;
+    ScalerObject * g_scaler;
 
-    double g_xScale;
-    double g_yScale;
-
-    QJSValue scaleProvider(QQmlEngine *, QJSEngine *scriptEngine)
+    QObject *scalerProvider(QQmlEngine *, QJSEngine *)
     {
-        QJSValue value = scriptEngine->newObject();
-        value.setProperty("xScale", g_xScale);
-        value.setProperty("yScale", g_yScale);
+        assert(g_scaler != nullptr);
 
-        return value;
+        return g_scaler;
     }
 }
 
 
-void Scaler::setup(const QSize& base, const QSize& real)
+ScalerObject::ScalerObject(const QSize& base, QWindow* window):
+    m_base(base),
+    m_real(window->size()),
+    m_xScale(0.0),
+    m_yScale(0.0),
+    m_window(window)
 {
-    g_base = base;
-    g_real = real;
-
-    recalculate();
-
-    qmlRegisterSingletonType("avoider.scaler", 1, 0, "AvoiderApi", scaleProvider);
+    QObject::connect(window, &QWindow::widthChanged,  this, &ScalerObject::updateRealWidth);
+    QObject::connect(window, &QWindow::heightChanged, this, &ScalerObject::updateRealHeight);
 }
 
 
-void Scaler::updateRealWidth(int w)
+void ScalerObject::updateRealWidth(int w)
 {
-    g_real.setWidth(w);
-
-    recalculate();
-}
-
-
-void Scaler::updateRealHeight(int h)
-{
-    g_real.setHeight(h);
+    m_real.setWidth(w);
 
     recalculate();
 }
 
 
-void Scaler::recalculate()
+void ScalerObject::updateRealHeight(int h)
 {
-    if (g_real.isEmpty() == false)
+    m_real.setHeight(h);
+
+    recalculate();
+}
+
+
+void ScalerObject::recalculate()
+{
+    if (m_real.isEmpty() == false)
     {
-        g_xScale = g_base.width()  / g_real.width();
-        g_yScale = g_base.height() / g_real.height();
+        m_xScale = m_real.width()  / double(m_base.width());
+        m_yScale = m_real.height() / double(m_base.height());
+
+        emit scaleChanged(scale());
     }
+}
+
+
+double ScalerObject::scale() const
+{
+    return m_xScale < m_yScale? m_xScale: m_yScale;
+}
+
+
+Scaler::Scaler(const QSize& base, QWindow* window)
+{
+    assert(g_scaler == nullptr);
+    g_scaler = new ScalerObject(base, window);
+
+    qmlRegisterSingletonType<ScalerObject>("avoider.scaler", 1, 0, "AvoiderApi", &scalerProvider);
+}
+
+
+Scaler::~Scaler()
+{
+    g_scaler = nullptr;
 }
