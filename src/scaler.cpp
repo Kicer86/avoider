@@ -34,13 +34,13 @@ void Scaler::setup(const QSize& base, const QSize& real)
 }
 
 
-
 void Scaler::updateRealWidth(int w)
 {
     g_real.setWidth(w);
 
     recalculate();
 }
+
 
 void Scaler::updateRealHeight(int h)
 {
