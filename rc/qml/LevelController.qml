@@ -62,6 +62,27 @@ Item
         State
         {
             name: "level_02"
+
+            onCompleted:
+            {
+                var levelComponent = Qt.createComponent("qrc:/qml/levels/Level_02.qml");
+
+                if (levelComponent.status == Component.Error)
+                    console.log("Level loading error: " + levelComponent.errorString())
+                else
+                {
+                    var position = mapToItem(null, 0, 0);
+                    var level = levelComponent.createObject(canvas,
+                                                         {
+                                                             target : Qt.binding(function() {return player} ),
+                                                             z:       enemies_z_axis,
+                                                             width:   canvas.width,
+                                                             height:  canvas.height,
+                                                         });
+
+                    activeLevel.append({"obj": level})
+                }
+            }
         }
     ]
 }

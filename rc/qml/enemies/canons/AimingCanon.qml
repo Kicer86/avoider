@@ -1,9 +1,12 @@
 import QtQuick 2.4
 
+import "../../"
 
 BaseCanonForm {
 
     id: cannon
+
+    property Player target
 
     property int targetX
     property int targetY
@@ -33,13 +36,14 @@ BaseCanonForm {
         interval: 2000; running: true; repeat: true
 
         onTriggered: createBullet()
+
     }
 
 
     function calcRadians() {   // This function calculate angle between canon and player (in radians)
 
         var position = mapToItem(null, 0, 0);
-        var ratio = (position.y - (targetY + 25) )/(position.x - (targetX + 25) ) //mapToItem takes x,y coordinates from Canon on canvas
+        var ratio = (position.y - (target.y + 25) )/(position.x - (target.x + 25) ) //mapToItem takes x,y coordinates from Canon on canvas
         var angle = Math.atan(ratio)
 
         return (angle);
@@ -51,8 +55,8 @@ BaseCanonForm {
         var component = Qt.createComponent("qrc:/qml/enemies/canons/missiles/Bullet.qml");
 
         var position = mapToItem(null, 0, 0);
-        var bullet = component.createObject(canvas, {playerX: Qt.binding(function() {return targetX + 25} ),
-                                                     playerY: Qt.binding(function() {return targetY + 25} ),
+        var bullet = component.createObject(canvas, {player: Qt.binding(function() {return target} ),
+                                                    // player: Qt.binding(function() {return target.y + 25} ),
                                                      angle:   calcRadians(),
                                                      speed:   3,
                                                      x:       position.x,
@@ -62,7 +66,7 @@ BaseCanonForm {
 
 
         cannon.stopped.connect(bullet.disarm);   // when canon is being stopped, disarm all active bullets
-        bullet.targetHit.connect(targetHit);     // when bullet hit target, emit canon's signal about it
+       // bullet.targetHit.connect(targetHit);     // when bullet hit target, emit canon's signal about it
         bullet.disarmed.connect(function()       // when bullet dies, disconnect it from canon's signals
         {
             cannon.stopped.disconnect(bullet.disarm)
@@ -101,6 +105,7 @@ BaseCanonForm {
                 stopped()
             }
         }
+
     ]
 
     Component.onDestruction:
