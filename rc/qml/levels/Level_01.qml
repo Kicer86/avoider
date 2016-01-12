@@ -23,7 +23,7 @@ Item
         anchors.right: level.right
 
 
-        HorizontalCanon
+        SeriesHorizontalCanon
         {
             id: canon
 

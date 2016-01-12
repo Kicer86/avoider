@@ -4,7 +4,7 @@
         <file>qml/Controler.qml</file>
         <file>qml/ControlerForm.ui.qml</file>
         <file>qml/LevelController.qml</file>
-        <file>qml/Player.qml</file>        
+        <file>qml/Player.qml</file>
         <file>qml/ScoreTable.qml</file>
         <file>qml/Background.qml</file>
         <file>qml/enemies/Submarine.qml</file>
@@ -15,5 +15,6 @@
         <file>qml/enemies/canons/missiles/BulletForm.ui.qml</file>
         <file>qml/levels/Level_01.qml</file>
         <file>qml/levels/Level_02.qml</file>
+        <file>qml/enemies/canons/SeriesHorizontalCanon.qml</file>
     </qresource>
 </RCC>
