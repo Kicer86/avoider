@@ -303,8 +303,8 @@ Rectangle
             PropertyChanges
             {
                 target: background
-                opacity: 1
-                visible: true
+                opacity: 0
+                visible: false
             }
         },
 

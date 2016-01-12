@@ -1,3 +1,6 @@
+/*
+  In this level submarine shoots horizontal bullets without any modifications
+*/
 
 import QtQuick 2.0
 
