@@ -45,6 +45,7 @@ Rectangle
         enemies_z_axis: 5
 
         player: player
+        anchors.fill: parent
     }
 
     // arena

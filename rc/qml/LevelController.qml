@@ -50,8 +50,7 @@ Item
                                                          {
                                                              target : Qt.binding(function() {return player} ),
                                                              z:       enemies_z_axis,
-                                                             width:   canvas.width,
-                                                             height:  canvas.height,
+                                                             "anchors.fill": parent
                                                          });
 
                     activeLevel.append({"obj": level})
