@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/avoider.qml</file>
-        <file>qml/Controler.qml</file>
+        <file>qml/Controller.qml</file>
         <file>qml/LevelController.qml</file>
         <file>qml/Player.qml</file>
         <file>qml/ScoreTable.qml</file>

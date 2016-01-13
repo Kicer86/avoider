@@ -27,7 +27,7 @@ Rectangle
         height: canvas.height
     }
 
-    Controler
+    Controller
     {
         id: pad
 
