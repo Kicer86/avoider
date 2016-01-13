@@ -21,15 +21,25 @@ BaseCanonForm
         onTriggered: createBulletX3()
     }
 
+    Timer
+    {
+        id: function_timer
+
+        interval: 100; running:false; repeat: true
+
+        onTriggered: createBullet()
+    }
+
     function createBulletX3(){
+        function_timer.running = true
         var i = 0;
         for(i=0; i<3; i++){
-            createBullet();
 
-//            for(i=0; i<10000; i++)
-//            {
-//                //sleep
-//            }
+            console.log("ddd")
+            for(i=0; i<1000; i++)
+            {
+                //sleep
+            }
         }
     }
 
@@ -37,6 +47,12 @@ BaseCanonForm
     function createBullet()
     {
             var component = Qt.createComponent("qrc:/qml/enemies/canons/missiles/Bullet.qml");
+            if (component.status == Component.Error)
+            {
+                console.log("Bullet loading error: " + component.errorString())
+            }else{
+                console.log("Bullet OK!!!!!")
+            }
 
             var position = mapToItem(null, 0, 0);
             var bullet = component.createObject(canvas, {player: Qt.binding(function() {return target} ),
