@@ -73,15 +73,9 @@ Rectangle
         y: 100
         z: 5
 
-        scale: Scaler.AvoiderApi.scale
+        size: canvas.width / 10
 
         transformOrigin: Item.Center
-
-        transform: Scale
-        {
-            xScale: Scaler.AvoiderApi.xScale
-            yScale: Scaler.AvoiderApi.yScale
-        }
 
         // read pad every 20ms and update player's move
         Timer
