@@ -32,9 +32,8 @@ Rectangle
         id: pad
 
         z: 5
-
-        transformOrigin: Item.BottomRight
-        scale: 0.5
+        width: canvas.width / 4
+        height: canvas.height / 4
 
         anchors.right: canvas.right
         anchors.bottom: canvas.bottom
