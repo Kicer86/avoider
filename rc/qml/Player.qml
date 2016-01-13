@@ -10,11 +10,9 @@ Item
 
     Rectangle
     {
-        width: player.size
-        height: player.size
-
+        anchors.fill: parent
         color: "#ff0000"
-        radius: player.size
+        radius: player.width
         border.width: 2
     }
 }

@@ -54,7 +54,6 @@ Rectangle
 
         x:      50
         y:      50
-
         z:      3
 
         width:  parent.width - (pad.width * pad.scale) - 70
@@ -72,9 +71,8 @@ Rectangle
         y: 100
         z: 5
 
-        size: canvas.width / 10
-
-        transformOrigin: Item.Center
+        width: canvas.width / 10
+        height: canvas.width / 10
 
         // read pad every 20ms and update player's move
         Timer
