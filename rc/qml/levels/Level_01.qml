@@ -28,12 +28,11 @@ Item
         {
             id: canon
 
-            z: submarine.z
+            z:      submarine.z
+            height: submarine.height
+            width:  canon.heigth
 
-            transformOrigin: Item.Left
-            scale: 0.5
-
-            anchors.left: submarine.left
+            anchors.left:           submarine.left
             anchors.verticalCenter: submarine.verticalCenter
 
             target: level.target
