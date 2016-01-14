@@ -30,7 +30,7 @@ Item
 
             z:      submarine.z
             height: submarine.height
-            width:  canon.heigth
+            width:  submarine.height
 
             anchors.left:           submarine.left
             anchors.verticalCenter: submarine.verticalCenter
