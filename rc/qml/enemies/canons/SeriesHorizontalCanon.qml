@@ -21,25 +21,19 @@ BaseCanonForm
         onTriggered: createBulletX3()
     }
 
-    Timer
-    {
-        id: function_timer
-
-        interval: 100; running:false; repeat: true
-
-        onTriggered: createBullet()
+    function delay(delayTime) {
+        timer = Qt.createQmlObject()("import QtQuick 2.0; Timer {}", parent);
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.start();
     }
 
     function createBulletX3(){
-        function_timer.running = true
+
         var i = 0;
         for(i=0; i<3; i++){
-
-            console.log("ddd")
-            for(i=0; i<1000; i++)
-            {
-                //sleep
-            }
+           createBullet();
+            delay(100);
         }
     }
 
