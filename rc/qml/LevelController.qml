@@ -51,8 +51,8 @@ Item
                                                          {
                                                              target:         Qt.binding(function() {return player} ),
                                                              z:              enemies_z_axis,
-                                                             bottom_limit:   bottom_limit,
-                                                             top_limit:      top_limit,
+                                                             bottom_limit:   Qt.binding(function() {return bottom_limit} ),
+                                                             top_limit:      Qt.binding(function() {return top_limit} ),
                                                              "anchors.fill": parent
                                                          });
 

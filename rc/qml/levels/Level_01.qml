@@ -18,7 +18,9 @@ Item
 
         id: submarine
 
-        z: level.z
+        z:             level.z
+        width:         canvas.width / 10
+        height:        (bottom_limit - top_limit) / 10
         anchors.right: level.right
 
 
