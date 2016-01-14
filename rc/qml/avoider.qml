@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
 
+import avoider.scaler 1.0 as Scaler
+
 import "enemies"
 
 Rectangle
@@ -25,14 +27,13 @@ Rectangle
         height: canvas.height
     }
 
-    Controler
+    Controller
     {
         id: pad
 
         z: 5
-
-        transformOrigin: Item.BottomRight
-        scale: 0.5
+        width: canvas.width / 4
+        height: canvas.height / 4
 
         anchors.right: canvas.right
         anchors.bottom: canvas.bottom
@@ -42,8 +43,10 @@ Rectangle
     {
         id: levelController
         enemies_z_axis: 5
-
-        player: player
+        top_limit:      ring.y
+        bottom_limit:   pad.y
+        player:         player
+        anchors.fill: parent
     }
 
     // arena
@@ -53,7 +56,6 @@ Rectangle
 
         x:      50
         y:      50
-
         z:      3
 
         width:  parent.width - (pad.width * pad.scale) - 70
@@ -71,7 +73,8 @@ Rectangle
         y: 100
         z: 5
 
-        transformOrigin: Item.Center
+        width: canvas.width / 10
+        height: canvas.width / 10
 
         // read pad every 20ms and update player's move
         Timer

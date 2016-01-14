@@ -1,8 +1,6 @@
 import QtQuick 2.4
 
 Item {
-    width: 100
-    height: 100
     property alias image_canon : image_canon
 
     Image {
@@ -11,8 +9,7 @@ Item {
 
         x: 0
         y: 0
-        width: 100
-        height: 100
+        anchors.fill: parent
         source: "qrc:/img/canon.png"
     }
 }

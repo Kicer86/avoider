@@ -1,32 +1,32 @@
 #include <cassert>
 #include <QApplication>
 #include <QPainter>
-#include <QQuickWidget>
+#include <QQuickView>
 #include <QScreen>
 #include <QSplashScreen>
 #include <QTranslator>
 #include <QString>
 
 #include "locale.h"  // defines Locale class
+#include "scaler.hpp"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QQuickWidget view;    
+    QQuickView view;
 
     QString locale = QLocale::system().name();  // Reading locale settings
 
     Locale trans_change;
     trans_change.changeLocale(locale);
 
-
+    Scaler scaler(QSize(800, 600), &view);
 
 #if defined(Q_OS_ANDROID)
 
-    QScreen* screen = app.primaryScreen();
-    QRect geometry = screen->geometry();
+    // loading screen on Android
 
-    QPixmap pixmap(geometry.size());
+    QPixmap pixmap(view.size());
     pixmap.fill(Qt::black);
 
     QPainter painter(&pixmap);
@@ -39,9 +39,10 @@ int main(int argc, char *argv[])
     app.processEvents();
 
     splash.finish(&view);
+
 #endif
 
-    view.setResizeMode(QQuickWidget::SizeRootObjectToView);
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
     view.setSource(QUrl("qrc:/qml/avoider.qml"));
     view.show();
 
