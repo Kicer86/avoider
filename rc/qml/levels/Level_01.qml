@@ -9,6 +9,8 @@ Item
 {
     id: level
 
+    property int top_limit: 0
+    property int bottom_limit: 0
     property Player target
 
     Submarine
@@ -46,20 +48,20 @@ Item
 
             NumberAnimation
             {
-                target: submarine;
-                property: "y";
-                from: 0;
-                to: 300;
+                target:   submarine
+                property: "y"
+                from:     top_limit
+                to:       bottom_limit - submarine.height
                 duration: 5000
                 easing.type: Easing.InOutQuad
             }
 
             NumberAnimation
             {
-                target: submarine;
-                property: "y";
-                from: 300;
-                to: 0;
+                target:   submarine
+                property: "y"
+                from:     bottom_limit - submarine.height
+                to:       top_limit
                 duration: 5000
                 easing.type: Easing.InOutQuad
             }

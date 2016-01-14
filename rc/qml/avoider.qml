@@ -43,8 +43,9 @@ Rectangle
     {
         id: levelController
         enemies_z_axis: 5
-
-        player: player
+        top_limit:      ring.y
+        bottom_limit:   pad.y
+        player:         player
         anchors.fill: parent
     }
 

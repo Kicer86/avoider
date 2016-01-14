@@ -5,7 +5,8 @@ Item
     id: controller
 
     property int enemies_z_axis: 0
-
+    property int top_limit: 0
+    property int bottom_limit: 0
     property Player player
 
     signal playerHit()
@@ -48,8 +49,10 @@ Item
                     var position = mapToItem(null, 0, 0);
                     var level = levelComponent.createObject(canvas,
                                                          {
-                                                             target : Qt.binding(function() {return player} ),
-                                                             z:       enemies_z_axis,
+                                                             target:         Qt.binding(function() {return player} ),
+                                                             z:              enemies_z_axis,
+                                                             bottom_limit:   bottom_limit,
+                                                             top_limit:      top_limit,
                                                              "anchors.fill": parent
                                                          });
 
