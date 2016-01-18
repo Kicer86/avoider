@@ -9,6 +9,8 @@ Item
     property int bottom_limit: 0
     property Player player
 
+    property int level: 0
+
     signal playerHit()
 
     state: "inactive"
@@ -31,16 +33,19 @@ Item
                     activeLevel.get(0).obj.destroy();
                     activeLevel.remove(0);
                 }
+
+                level = 1
             }
         },
 
         State
         {
-            name: "level_01"
+            name: "game"
 
             onCompleted:
             {
-                var levelComponent = Qt.createComponent("qrc:/qml/levels/Level_01.qml");
+                var path = "qrc:/qml/levels/Level_" + controller.level + ".qml";
+                var levelComponent = Qt.createComponent(path);
 
                 if (levelComponent.status == Component.Error)
                     console.log("Level loading error: " + levelComponent.errorString())
@@ -59,11 +64,7 @@ Item
                     activeLevel.append({"obj": level})
                 }
             }
-        },
-
-        State
-        {
-            name: "level_02"
         }
+
     ]
 }

@@ -324,7 +324,7 @@ Rectangle
             PropertyChanges
             {
                 target: levelController
-                state: "level_01"
+                state: "game"
             }
         },
 
